@@ -1,0 +1,19 @@
+{
+  "name": "scoringmodel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \\\"Error: no test specified\\\" && exit 1"
+  },
+  "author": "Juba Saadi",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^4.4.2"
+  },
+  "dependencies": {
+    "normal-distribution": "^1.1.1",
+    "preact": "^10.5.14",
+    "ts-gaussian": "^1.0.2"
+  }
+}

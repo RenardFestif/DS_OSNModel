@@ -1,0 +1,15 @@
+#!/usr/bin/env ts-node
+
+/**
+ * CONST FILE
+ */
+
+export const DEFAULT_SCORE = 50;
+
+
+export const MU_NATURE = 0
+export const SIGMA_NATURE = 1
+
+export const TRUTHFULL_MALICIOUS_RATIO = 1
+export const NATURE_TRUTHFULL_THRESHOLD = 2
+export const NATURE_MALICIOUS_THRESHOLD = MU_NATURE - (NATURE_TRUTHFULL_THRESHOLD * TRUTHFULL_MALICIOUS_RATIO)
