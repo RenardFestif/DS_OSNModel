@@ -8,31 +8,32 @@ import { User } from "./User";
 export enum State {
     IDDLE,
     POST,
-    FOLLOW,
     RATE
 }
 
 
 export class OSN implements Subject {
 
-    private users: Array<User>;
-    private observers: Array<Observer>;
+    private _users: Array<User>;
+    private _observers: Array<Observer>;
     public state: State;
 
 
     constructor() {
-        this.users = [];
-        this.observers = [];
+        this._users = [];
+        this._observers = [];
         this.state = State.IDDLE;
     }
 
 
     /** GETTERS */
-    getUsers(): Array<User> { return this.users }
-    getObservers(): Array<Observer> { return this.observers }
+    get users(): Array<User> { return this._users }
+    get observers(): Array<Observer> { return this._observers }
+
+    getUser(id: number): any { return this._users.find(user => user.id === id) }
 
 
-    /** SETTERS */
+    /** MODIFIERS */
     addUser(user: User): void {
         this.users.push(user);
     }
@@ -51,8 +52,16 @@ export class OSN implements Subject {
         this.notify();
     }
 
-    follow(userSender: User, userReceiver: User): void {
-        this.notify();
+    follow(userSender: User, userReceiver: User): void | never {
+
+        // check if both users are registred on the OSN
+        if (this.getUser(userSender.id) !== undefined && this.getUser(userReceiver.id) !== undefined){
+            userSender.follow(userReceiver);
+            userReceiver.addFollower(userSender);
+        }else{
+            throw new Error("One of the specified user is not registered in the OSN");
+        }
+
     }
 
     /** INTERFACE IMPLEMENTATION */
@@ -83,3 +92,4 @@ export class OSN implements Subject {
     }
 
 }
+
