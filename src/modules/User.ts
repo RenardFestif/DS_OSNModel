@@ -4,44 +4,52 @@ import { Content } from "./Content";
 import { DEFAULT_SCORE, MU_NATURE, NATURE_MALICIOUS_THRESHOLD, NATURE_TRUTHFULL_THRESHOLD, SIGMA_NATURE } from "./Constant";
 import Gaussian from 'ts-gaussian';
 
-enum Nature {
+export enum Nature {
     MALICIOUS,
     AVERAGE,
     TRUTHFULL
 }
 
 export class User {
-    private feed: Array<Content>;
-    private follows: Array<User>;
-    private followers: Array<User>;
-    private score: number;
-    private nature: Nature;
+    static count = 0;
+    private _id: number;
+    private _feed: Array<Content>;
+    private _follows: Array<User>;
+    private _followers: Array<User>;
+    private _score: number;
+    private _nature: Nature;
 
     constructor() {
-        this.feed = [];
-        this.follows = [];
-        this.followers = [];
-        this.score = DEFAULT_SCORE;
-        this.nature = this.setNature();
+        User.count++;
+        this._id = User.count;
+        this._feed = [];
+        this._follows = [];
+        this._followers = [];
+        this._score = DEFAULT_SCORE;
+        this._nature = this.initNature();
+
+        
 
     }
 
 
     /** GETTERS */
-    public getNature(): Nature { return this.nature; }
+    public get id():number {return this._id;}
 
-    public getFeed(): Array<Content> { return this.feed }
+    public get nature(): Nature { return this._nature; }
 
-    public getFollows(): Array<User> { return this.follows }
+    public get feed(): Array<Content> { return this._feed }
 
-    public getFollowers(): Array<User> { return this.followers }
+    public get follows(): Array<User> { return this._follows }
 
-    public getScore(): number { return this.score }
+    public get followers(): Array<User> { return this._followers }
+
+    public get score(): number { return this._score }
 
 
-    /** SETTERS */
+    /** MODIFYERS */
 
-    public setNature(): Nature {
+    public initNature(): Nature {
 
         const distribution = new Gaussian(MU_NATURE, SIGMA_NATURE);
         let sample = distribution.ppf(Math.random())
@@ -56,6 +64,10 @@ export class User {
 
     }
 
+    public addFollower(user: User): void {
+        this._followers.push(user);
+    }
+
 
     /** USER ACTION FUNCTIONS */
 
@@ -68,6 +80,7 @@ export class User {
     }
 
     public follow(user: User): void {
+        this._follows.push(user);
 
     }
 }

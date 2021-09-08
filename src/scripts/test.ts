@@ -13,9 +13,6 @@ let usrs = [usr1, usr2];
 osn.addUsers(usrs);
 
 
-console.log(osn.getUsers())
+console.log(osn.users);
+console.log(osn.getUser(1))
 
-let obs = new ContentObserver();
-osn.attach(obs);
-
-osn.post(usr1, new Content(usr1));

@@ -4,14 +4,25 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \\\"Error: no test specified\\\" && exit 1"
+    "test": "jasmine-ts",
+    "test:w": "nodemon -e ts --exec \"npm test\""
   },
   "author": "Juba Saadi",
   "license": "MIT",
   "devDependencies": {
+    "@types/jasmine": "^3.9.0",
+    "jasmine": "^3.9.0",
+    "jasmine-ts": "^0.4.0",
+    "node-ts": "^5.1.2",
+    "ts-node": "^10.2.1",
     "typescript": "^4.4.2"
   },
   "dependencies": {
+    "@types/chai": "4.2.11",
+    "@types/mocha": "7.0.2",
+    "@types/node": "14.0.11",
+    "chai": "4.2.0",
+    "mocha": "7.2.0",
     "normal-distribution": "^1.1.1",
     "preact": "^10.5.14",
     "ts-gaussian": "^1.0.2"

@@ -12,7 +12,7 @@ export class Content {
     constructor(author: User) {
         this.author = author;
         this.veracity = 0;
-        this.score = author.getScore();
+        this.score = author.score;
         this.impact = 0;
     }
 
