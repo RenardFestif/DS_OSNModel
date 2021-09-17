@@ -45,7 +45,8 @@
         "no-console":"off",
         "no-shadow":"off",
         "lines-between-class-members":"off",
-        "no-plusplus":"off"
+        "no-plusplus":"off",
+        "dot-notation":"off"
         
      }
 }

@@ -5,11 +5,16 @@ import { User } from './User';
 
 export enum State {
     POST,
-    IDDLE
+    IDDLE,
+    FETCH
 }
 
 export enum Policy {
   DEFAULT,
+}
+
+interface Message{
+  body: {arg0 : Object},
 }
 
 export class OSN implements Subject {
@@ -18,7 +23,7 @@ export class OSN implements Subject {
     private _feed: Array<Content>;
     private _policy: Policy;
 
-    public message: JSON;
+    public message: Message;
     public state: State;
 
     constructor() {
@@ -27,7 +32,7 @@ export class OSN implements Subject {
       this._feed = [];
       this._policy = Policy.DEFAULT;
 
-      this.message = <JSON> <unknown> null;
+      this.message = this.resetMessage();
       this.state = State.IDDLE;
     }
 
@@ -55,30 +60,39 @@ export class OSN implements Subject {
     }
 
     /** TOOLS */
-    resetMessage():void {
-      this.message = <JSON> <unknown> null;
+    resetMessage():Message {
+      return { body: { arg0: {} } };
+    }
+
+    checkUserRegistred(user:User): void {
+      if (this.getUser(user.id) === undefined) {
+        throw new Error('One of the specified user is not registered in the OSN');
+      }
+    }
+
+    sortFeedByImpact():void {
+      this.feed.sort((a, b) => a.impact - b.impact);
+    }
+
+    setImpactToScalable():void {
+      this.sortFeedByImpact();
+      const minImpact = this.feed[0].impact;
+      const maxImpact = this.feed[this.feed.length - 1].impact;
+
+      this.feed.forEach((content) => {
+        content.convertToScalable(((content.impact - minImpact)) / maxImpact);
+      });
     }
 
     /** ACTIONS */
     post(user: User): void {
       // checks if the user is registred on the OSN
-      if (this.getUser(user.id) === undefined) {
-        throw new Error('One of the specified user is not registered in the OSN');
-      }
-
+      this.checkUserRegistred(user);
       // User write Content and sends it to the OSN
       const post = user.writeContent();
 
       // pushes the newly generated post in the osn general feed
       this.feed.push(post);
-
-      // const message = {
-      //   data: post,
-      // };
-
-      // this.message = <JSON> <unknown> message;
-      // this.state = State.POST;
-      // this.notify();
     }
 
     retweet(user:User, content:Content): void {
@@ -86,6 +100,13 @@ export class OSN implements Subject {
     }
 
     fetchContent(user:User): void {
+      // checks if the user is registred on the OSN
+      this.checkUserRegistred(user);
+
+      this.message.body = { arg0: user };
+      this.state = State.FETCH;
+      this.notify();
+      this.resetMessage();
     }
 
     rate(user: User, content: Content): void {

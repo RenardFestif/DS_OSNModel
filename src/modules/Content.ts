@@ -15,7 +15,7 @@ export default class Content {
       this._author = author;
       this._veracity = this.initVeracity();
       this._score = author.score;
-      this._impact = author.followers.length;
+      this._impact = author.followers.length === 0 ? 1 : author.followers.length;
     }
 
     //* * GETTERS */
@@ -62,5 +62,10 @@ export default class Content {
       }
 
       return veracity;
+    }
+
+    //* * METHODS */
+    public convertToScalable(scalable: number):void {
+      this.impact = scalable;
     }
 }
