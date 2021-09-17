@@ -17,6 +17,7 @@ export class User {
     private _id: number;
     private _publicFeed: Array<Content>;
     private _privateFeed: Array<Content>;
+    private _retweets : Array<Content>;
     private _follows: Array<User>;
     private _followers: Array<User>;
     private _score: number;
@@ -31,6 +32,7 @@ export class User {
       this._privateFeed = [];
       this._follows = [];
       this._followers = [];
+      this._retweets = [];
       this._score = DEFAULT_SCORE;
       this._nature = this.initNature();
       this._osns = [];
@@ -45,6 +47,8 @@ export class User {
 
     public get privateFeed(): Array<Content> { return this._privateFeed; }
 
+    public get retweets(): Array<Content> { return this._retweets; }
+
     public get follows(): Array<User> { return this._follows; }
 
     public get followers(): Array<User> { return this._followers; }
@@ -57,6 +61,7 @@ export class User {
 
     public set publicFeed(publicFeed:Array<Content>) { this.publicFeed = publicFeed; }
     public set privateFeed(privateFeed:Array<Content>) { this.privateFeed = privateFeed; }
+    public set retweets(retweets: Array<Content>) { this.retweets = retweets; }
 
     /** MODIFIERS */
 
@@ -74,6 +79,10 @@ export class User {
 
     public addFollower(user: User): void {
       this._followers.push(user);
+    }
+
+    public retweet(content:Content): void {
+      this.retweets.push(content);
     }
 
     /** USER ACTION FUNCTIONS */

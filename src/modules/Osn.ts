@@ -89,14 +89,17 @@ export class OSN implements Subject {
       // checks if the user is registred on the OSN
       this.checkUserRegistred(user);
       // User write Content and sends it to the OSN
-      const post = user.writeContent();
+      const content = user.writeContent();
 
       // pushes the newly generated post in the osn general feed
-      this.feed.push(post);
+      this.feed.push(content);
     }
 
     retweet(user:User, content:Content): void {
+      this.checkUserRegistred(user);
 
+      content.retweet(user.followers.length);
+      user.retweet(content);
     }
 
     fetchContent(user:User): void {

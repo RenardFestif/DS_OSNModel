@@ -68,4 +68,8 @@ export default class Content {
     public convertToScalable(scalable: number):void {
       this.impact = scalable;
     }
+
+    public retweet(boostImpact: number) {
+      this.impact += boostImpact;
+    }
 }

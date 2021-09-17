@@ -24,5 +24,4 @@ osn.attach(new DefaultPolicy());
 
 osn.fetchContent(usr1);
 
-console.log('PRIVATE FEED : ', usr1.privateFeed.length);
-console.log('PUBLIC FEED : ', usr1.publicFeed.length);
+osn.retweet(usr2, usr1.privateFeed[0]);
