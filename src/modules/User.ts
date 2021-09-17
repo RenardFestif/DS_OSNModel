@@ -15,7 +15,8 @@ export class User {
     static count = 0;
 
     private _id: number;
-    private _feed: Array<Content>;
+    private _publicFeed: Array<Content>;
+    private _privateFeed: Array<Content>;
     private _follows: Array<User>;
     private _followers: Array<User>;
     private _score: number;
@@ -26,7 +27,8 @@ export class User {
       User.count += 1;
 
       this._id = User.count;
-      this._feed = [];
+      this._publicFeed = [];
+      this._privateFeed = [];
       this._follows = [];
       this._followers = [];
       this._score = DEFAULT_SCORE;
@@ -39,7 +41,9 @@ export class User {
 
     public get nature(): Nature { return this._nature; }
 
-    public get feed(): Array<Content> { return this._feed; }
+    public get publicFeed(): Array<Content> { return this._publicFeed; }
+
+    public get privateFeed(): Array<Content> { return this._privateFeed; }
 
     public get follows(): Array<User> { return this._follows; }
 
@@ -48,6 +52,11 @@ export class User {
     public get score(): number { return this._score; }
 
     public get osns(): Array<OSN> { return this._osns; }
+
+    //* * SETTERS */
+
+    public set publicFeed(publicFeed:Array<Content>) { this.publicFeed = publicFeed; }
+    public set privateFeed(privateFeed:Array<Content>) { this.privateFeed = privateFeed; }
 
     /** MODIFIERS */
 
