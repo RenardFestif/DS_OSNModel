@@ -21,7 +21,3 @@ osn.post(usr3);
 osn.post(usr3);
 
 osn.attach(new DefaultPolicy());
-
-osn.fetchContent(usr1);
-
-osn.retweet(usr2, usr1.privateFeed[0]);
