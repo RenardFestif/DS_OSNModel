@@ -32,12 +32,12 @@ export default class DefaultPolicy implements Observer {
           // WE ADD THE FOLLOWING USERS PUBLICATIONS
           user.publicFeed.push(content);
         } else {
-          // WE ADD OTHER MEMBERS PUBLICATION RANDOMLY BASED ON THEIR IMPACT
-          let count = 0;
+          // WE ADD N = PUBLIC_POST FROM OTHER MEMBERS PUBLICATION RANDOMLY BASED ON THEIR IMPACT
           const distribution = new Gaussian(content.impact, PUBLIC_SIGMA);
-          if (distribution.ppf(Math.random()) > PUBLIC_THRESHOLD && count < PUBLIC_POSTS) {
-            user.publicFeed.push(content);
-            count++;
+          for (let index = 0; index < PUBLIC_POSTS; index++) {
+            if (distribution.ppf(Math.random()) > PUBLIC_THRESHOLD) {
+              user.publicFeed.push(content);
+            }
           }
         }
       });

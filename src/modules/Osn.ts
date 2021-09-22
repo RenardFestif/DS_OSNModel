@@ -1,5 +1,9 @@
+import { use } from 'chai';
+import Flatted from 'flatted';
 import { Observer } from '../helpers/IObserver';
 import { Subject } from '../helpers/ISubject';
+import getRandomSubarray from '../helpers/utils/tools';
+import { CONTENT_EXPOSURE_PERCENTAGE } from './Constant';
 import Content from './Content';
 import { User } from './User';
 
@@ -59,7 +63,7 @@ export class OSN implements Subject {
       users.forEach((user) => this.users.push(user));
     }
 
-    /** TOOLS */
+    /** METHODS */
     resetMessage():Message {
       return { body: { arg0: {} } };
     }
@@ -84,6 +88,23 @@ export class OSN implements Subject {
       });
     }
 
+    retweetAll(): void {
+      this.users.forEach((user) => {
+        // Select a subset of content to which the user is going to be exposed
+        const nonAuthoredFeed = user.getNonAuthoredPublicFeed();
+        const exposedContent = getRandomSubarray(nonAuthoredFeed, (nonAuthoredFeed.length * CONTENT_EXPOSURE_PERCENTAGE) / 100);
+        exposedContent.forEach((publicContent) => {
+          this.retweet(user, publicContent);
+        });
+      });
+    }
+
+    fetchAll(): void {
+      this.users.forEach((user) => {
+        this.fetchContent(user);
+      });
+    }
+
     /** ACTIONS */
     post(user: User): void {
       // checks if the user is registred on the OSN
@@ -95,14 +116,12 @@ export class OSN implements Subject {
       this.feed.push(content);
     }
 
-    retweet(user:User, content:Content): void {
+    private retweet(user:User, content:Content): void {
       this.checkUserRegistred(user);
-
-      content.retweet(user.followers.length);
-      user.retweet(content);
+      if (user.retweet(content)) { content.retweet(user.followers.length); }
     }
 
-    fetchContent(user:User): void {
+    private fetchContent(user:User): void {
       // checks if the user is registred on the OSN
       this.checkUserRegistred(user);
 
