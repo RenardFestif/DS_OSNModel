@@ -12,15 +12,14 @@
  * - Post X content for each user
  * - I * ( Fetch & retweet )
  *
- * - Mesure Impact of a new post
+ * - Mesure Content replication of a new post
  */
 
-import { Console } from 'console';
-import Flatted from 'flatted';
+import { assert } from 'console';
 import fs from 'fs';
 import { IContentVeracityDistribJSON, IFollowersDistribJSON, INatureDistribJSON } from '../helpers/interfaces/IEvaluation';
 import { zipf } from '../helpers/utils/distributionLaw';
-import getRandomSubarray, { snapshot } from '../helpers/utils/tools';
+import getRandomSubarray, { contentReplicationDistributionByVeracity } from '../helpers/utils/tools';
 import {
   MIN_Y_ADJUST, NB_ROUNDS, NUMBER_USERS, POSTS_PER_USER,
 } from '../modules/Constant';
@@ -78,17 +77,17 @@ osn.users.forEach((user) => {
 
   // POST
   for (let index = 0; index < POSTS_PER_USER; index++) {
-    osn.post(user);
+    const tmpContent = osn.post(user);
 
     switch (user.nature) {
       case Nature.MALICIOUS:
-        contentVeracityDistrib.malicious.push(osn.feed[osn.feed.length - 1].veracity);
+        contentVeracityDistrib.malicious.push(tmpContent.veracity);
         break;
       case Nature.AVERAGE:
-        contentVeracityDistrib.average.push(osn.feed[osn.feed.length - 1].veracity);
+        contentVeracityDistrib.average.push(tmpContent.veracity);
         break;
       case Nature.TRUTHFULL:
-        contentVeracityDistrib.truthfull.push(osn.feed[osn.feed.length - 1].veracity);
+        contentVeracityDistrib.truthfull.push(tmpContent.veracity);
         break;
       default:
         break;
@@ -96,11 +95,14 @@ osn.users.forEach((user) => {
   }
 });
 
+assert(osn.feed.length === NUMBER_USERS * POSTS_PER_USER);
+assert(osn.users.length === NUMBER_USERS);
+
 console.log('\x1b[32m%s\x1b[0m', 'Following list of all users completed');
 console.log('\x1b[32m%s\x1b[0m', 'Content posting of all users completed');
 console.log('\x1b[32m%s\x1b[0m', 'General feed built');
 
-const firstSnapshot = snapshot(osn);
+const initialContentRepDistrib = contentReplicationDistributionByVeracity(osn);
 
 // FETCHS AND RETWEETS
 for (let index = 0; index < NB_ROUNDS; index++) {
@@ -113,7 +115,9 @@ for (let index = 0; index < NB_ROUNDS; index++) {
   // Snapshot ?
 }
 
-const finalSnapshot = snapshot(osn);
+const finalContentRepDistrib = contentReplicationDistributionByVeracity(osn);
+
+// AVERAGE Rewteet feed veracity for each user
 
 console.log('\x1b[32m%s\x1b[0m', 'Fetch & Retweet phase completed');
 console.log('\x1b[34m%s\x1b[0m', `Simulation completed in ${Math.trunc((new Date().getTime() - start) / 1000)} seconds`);
@@ -129,9 +133,9 @@ fs.mkdir('results', () => {
   jsonfile.writeFile('results/Witness_ContentVeracityDistrib.json', contentVeracityDistrib, { spaces: 2, EOL: '\r\n' });
   console.log('\x1b[36m%s\x1b[0m', 'Content veracity Distribution file written');
 
-  jsonfile.writeFile('results/Witness_InitialContentReplication.json', firstSnapshot, { spaces: 2, EOL: '\r\n' });
+  jsonfile.writeFile('results/Witness_InitialContentReplication.json', initialContentRepDistrib, { spaces: 2, EOL: '\r\n' });
   console.log('\x1b[36m%s\x1b[0m', 'Initial content replication file written');
 
-  jsonfile.writeFile('results/Witness_FinalContentReplication.json', finalSnapshot, { spaces: 2, EOL: '\r\n' });
+  jsonfile.writeFile('results/Witness_FinalContentReplication.json', finalContentRepDistrib, { spaces: 2, EOL: '\r\n' });
   console.log('\x1b[36m%s\x1b[0m', 'Final content replication file written');
 });
