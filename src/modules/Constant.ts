@@ -17,13 +17,13 @@ export const PUBLIC_POSTS = 20;
 export const PUBLIC_THRESHOLD = 0.33;
 export const PUBLIC_SIGMA = 0.05;
 
-export const NUMBER_USERS = 100;
+export const NUMBER_USERS = 500;
 export const TOP_CONNECTED_PERCENTAGE = 33;
 export const SMOOTHER_PERCENTAGE = 1;
 export const MIN_Y_ADJUST = (SMOOTHER_PERCENTAGE / 100) * NUMBER_USERS;
 // Fist Approach we suppose that each user post the same amount of content
 export const POSTS_PER_USER = 10;
-export const NB_ROUNDS = 5;
+export const NB_ROUNDS = 500;
 
 // Fake news are 70% more likely to be retweeted
 export const FAKE_RETWEET_MULTIPLICATOR = 0.7;

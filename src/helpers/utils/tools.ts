@@ -40,7 +40,7 @@ export function contentReplicationDistributionByVeracity(osn: OSN): IContentRepl
   const distrib : IContentReplicationDistribJSON = { data, totalUsers: NUMBER_USERS };
 
   const average = (array:number[]) => array.reduce((a:number, b:number) => a + b) / array.length;
-
+  osn.sortFeedByID();
   // eslint-disable-next-line no-undef
   const tmp = new Map();
   osn.feed.forEach((content) => {

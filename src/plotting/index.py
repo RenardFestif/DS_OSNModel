@@ -212,6 +212,6 @@ for (key, value) in toPlot.items():
             )
 
             plt.xlabel("Percentage of veracity")
-            plt.ylabel("Average content replication")
-            plt.title("Average content replication by veracity")
-            plt.show()
+            plt.ylabel("Average content replication evolution")
+            plt.title("Average evolutionn content replication by veracity")
+            plt.savefig("results/" + key + ".png")

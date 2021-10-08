@@ -1,5 +1,6 @@
 import { Observer } from '../helpers/IObserver';
 import { Subject } from '../helpers/ISubject';
+import { assert } from '../helpers/utils/tools';
 import {
   AVERAGE_RETWEET_PER_USER_PER_UNIT_OF_TIME, DEFAULT_FAKE_RETWEET_TRESHOLD, FAKE_RETWEET_MULTIPLICATOR, NUMBER_USERS,
 } from './Constant';
@@ -64,6 +65,10 @@ export class OSN implements Subject {
 
     /** METHODS */
 
+    getContentByID(id:number):Content|undefined {
+      return this.feed.find((content) => content.id === id);
+    }
+
     getContentReplicationScalable(content: Content):number {
       return content.impact / NUMBER_USERS;
     }
@@ -82,38 +87,43 @@ export class OSN implements Subject {
       this.feed.sort((a, b) => a.impact - b.impact);
     }
 
-    // getScalableContentReplication():Content[] {
-    //   this.sortFeedByImpact();
-    //   const sortedFeed: Content[] = [];
-    //   const minImpact = this.feed[0].impact;
-    //   const maxImpact = this.feed[this.feed.length - 1].impact;
-
-    //   this.feed.forEach((content) => {
-    //     const { id } = content;
-    //     const ct = content.copyContent();
-
-    //     ct.convertToScalable(((content.impact - minImpact)) / maxImpact);
-    //     sortedFeed.push(ct);
-    //   });
-    //   return sortedFeed;
-    // }
+    sortFeedByID():void {
+      this.feed.sort((a, b) => a.id - b.id);
+    }
 
     retweetAll(): void {
       this.users.forEach((user) => {
         // RETWEET OR NOT RETWEET
         if (Math.random() <= AVERAGE_RETWEET_PER_USER_PER_UNIT_OF_TIME) {
           // const retweetableContentSortedByImpact = user.sortedRetweetable();
-          let rt: Content | undefined;
+          let rt = false;
           let i = 0;
           // console.log(retweetableContentSortedByImpact.length);
-          while (rt === undefined) {
+          while (!rt) {
             const offsetContent = user.publicFeed[i % user.publicFeed.length];
             const adjustedThreshold = DEFAULT_FAKE_RETWEET_TRESHOLD - ((((offsetContent.veracity * FAKE_RETWEET_MULTIPLICATOR) / 100) * DEFAULT_FAKE_RETWEET_TRESHOLD));
-            // console.log(adjustedThreshold, offsetContent.veracity, offsetContent.id);
+            // console.log(adjustedThreshold, offsetContent.veracity, offsetContent.impact);
             if (Math.random() <= adjustedThreshold) {
-              rt = offsetContent;
-              // console.log(rt.id);
-              this.retweet(user, rt);
+              rt = !rt;
+              const oldContentRep = offsetContent.impact;
+              this.retweet(user, offsetContent);
+              const newContentRep = offsetContent.impact;
+              assert(
+                oldContentRep < newContentRep,
+                'Bad Content replication evolution',
+              );
+              assert(
+                offsetContent.id === user.publicFeed[i % user.publicFeed.length].id,
+                'Different ids',
+              );
+              const verif = this.getContentByID(user.publicFeed[i % user.publicFeed.length].id);
+              if (verif) {
+                assert(
+                  offsetContent.impact === user.publicFeed[i % user.publicFeed.length].impact
+                    && offsetContent.impact === verif.impact,
+                  'Different Content  Replication',
+                );
+              }
             }
             i++;
           }

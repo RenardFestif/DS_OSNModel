@@ -28,25 +28,29 @@ export default class DefaultPolicy implements Observer {
       }
 
       // UPDATE PUBLIC FEED
-      while (publicPostCount < PUBLIC_POSTS) {
+      // ADD CONTENT FROM FOLLOWED USER
+      user.follows.forEach((following) => {
+        following.privateFeed.forEach((content) => {
+          user.publicFeed.push(content);
+        });
+      });
+
+      assert(
+        user.publicFeed.length === user.follows.length * POSTS_PER_USER,
+        `Publicfeed length = ${user.publicFeed.length} does not match followers ${user.follows.length * POSTS_PER_USER} `,
+      );
+      // WE ADD N = PUBLIC_POST FROM OTHER MEMBERS PUBLICATION RANDOMLY BASED ON THEIR IMPACT
+      // The content must not been already retweetted by the user
+      while (user.publicFeed.length < PUBLIC_POSTS + user.follows.length * POSTS_PER_USER) {
         // eslint-disable-next-line no-loop-func
         subject.feed.reverse().forEach((content: Content) => {
           if (
-            user.follows.includes(content.author)
-            && !user.retweets.includes(content)
-            && !user.publicFeed.includes(content)
-          ) {
-            // WE ADD THE FOLLOWING USERS PUBLICATIONS
-            user.publicFeed.push(content);
-          } else if (
             content.author !== user
             && publicPostCount < PUBLIC_POSTS
             && !user.retweets.includes(content)
             && !user.publicFeed.includes(content)
+            && !user.follows.includes(content.author)
           ) {
-            // WE ADD N = PUBLIC_POST FROM OTHER MEMBERS PUBLICATION RANDOMLY BASED ON THEIR IMPACT
-            // The content must not been already retweetted by the user
-
             const distribution = new Gaussian(subject.getContentReplicationScalable(content), PUBLIC_SIGMA);
             const rand = distribution.ppf(Math.random());
             // console.log(user.id, rand, content.impact, content.veracity);
@@ -58,8 +62,11 @@ export default class DefaultPolicy implements Observer {
           }
         });
       }
-      console.log(user.publicFeed.length, PUBLIC_POSTS + user.follows.length * POSTS_PER_USER);
-      assert(user.publicFeed.length === PUBLIC_POSTS + user.follows.length * POSTS_PER_USER, `Publicfeed length = ${user.publicFeed.length} does not match ${PUBLIC_POSTS + user.follows.length * POSTS_PER_USER} `);
+
+      assert(
+        user.publicFeed.length === PUBLIC_POSTS + user.follows.length * POSTS_PER_USER,
+        `Publicfeed length = ${user.publicFeed.length} does not match ${PUBLIC_POSTS + user.follows.length * POSTS_PER_USER} `,
+      );
     }
   }
 }
