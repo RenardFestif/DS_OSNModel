@@ -3,19 +3,21 @@ import { SIGMA_VERACITY } from './Constant';
 import { Nature, User } from './User';
 
 export default class Content {
+    static count = 0;
+
+    private _id: number;
     private _author: User;
-
     private _veracity: number;
-
     private _score: number;
-
     private _impact: number;
 
     constructor(author: User) {
+      this._id = Content.count;
       this._author = author;
       this._veracity = this.initVeracity();
       this._score = author.score;
       this._impact = author.followers.length === 0 ? 1 : author.followers.length;
+      Content.count += 1;
     }
 
     //* * GETTERS */
@@ -23,6 +25,7 @@ export default class Content {
     public get veracity() { return this._veracity; }
     public get score() { return this._score; }
     public get impact() { return this._impact; }
+    public get id() { return this._id; }
 
     //* * SETTERS */
     public set veracity(veracity : number) { this._veracity = veracity; }
@@ -67,6 +70,13 @@ export default class Content {
     //* * METHODS */
     public convertToScalable(scalable: number):void {
       this.impact = scalable;
+    }
+
+    public copyContent(): Content {
+      const content = new Content(this.author);
+      content._id = this._id;
+      content.impact = this.impact;
+      return content;
     }
 
     public retweet(boostImpact: number) {

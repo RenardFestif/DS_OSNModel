@@ -1,9 +1,9 @@
-import { use } from 'chai';
-import Flatted from 'flatted';
 import { Observer } from '../helpers/IObserver';
 import { Subject } from '../helpers/ISubject';
-import getRandomSubarray from '../helpers/utils/tools';
-import { CONTENT_EXPOSURE_PERCENTAGE } from './Constant';
+import { assert } from '../helpers/utils/tools';
+import {
+  AVERAGE_RETWEET_PER_USER_PER_UNIT_OF_TIME, DEFAULT_FAKE_RETWEET_TRESHOLD, FAKE_RETWEET_MULTIPLICATOR, NUMBER_USERS,
+} from './Constant';
 import Content from './Content';
 import { User } from './User';
 
@@ -64,6 +64,15 @@ export class OSN implements Subject {
     }
 
     /** METHODS */
+
+    getContentByID(id:number):Content|undefined {
+      return this.feed.find((content) => content.id === id);
+    }
+
+    getContentReplicationScalable(content: Content):number {
+      return content.impact / NUMBER_USERS;
+    }
+
     resetMessage():Message {
       return { body: { arg0: {} } };
     }
@@ -78,24 +87,47 @@ export class OSN implements Subject {
       this.feed.sort((a, b) => a.impact - b.impact);
     }
 
-    setImpactToScalable():void {
-      this.sortFeedByImpact();
-      const minImpact = this.feed[0].impact;
-      const maxImpact = this.feed[this.feed.length - 1].impact;
-
-      this.feed.forEach((content) => {
-        content.convertToScalable(((content.impact - minImpact)) / maxImpact);
-      });
+    sortFeedByID():void {
+      this.feed.sort((a, b) => a.id - b.id);
     }
 
     retweetAll(): void {
       this.users.forEach((user) => {
-        // Select a subset of content to which the user is going to be exposed
-        const nonAuthoredFeed = user.getNonAuthoredPublicFeed();
-        const exposedContent = getRandomSubarray(nonAuthoredFeed, (nonAuthoredFeed.length * CONTENT_EXPOSURE_PERCENTAGE) / 100);
-        exposedContent.forEach((publicContent) => {
-          this.retweet(user, publicContent);
-        });
+        // RETWEET OR NOT RETWEET
+        if (Math.random() <= AVERAGE_RETWEET_PER_USER_PER_UNIT_OF_TIME) {
+          // const retweetableContentSortedByImpact = user.sortedRetweetable();
+          let rt = false;
+          let i = 0;
+          // console.log(retweetableContentSortedByImpact.length);
+          while (!rt) {
+            const offsetContent = user.publicFeed[i % user.publicFeed.length];
+            const adjustedThreshold = DEFAULT_FAKE_RETWEET_TRESHOLD - ((((offsetContent.veracity * FAKE_RETWEET_MULTIPLICATOR) / 100) * DEFAULT_FAKE_RETWEET_TRESHOLD));
+            // console.log(adjustedThreshold, offsetContent.veracity, offsetContent.impact);
+            if (Math.random() <= adjustedThreshold) {
+              rt = !rt;
+              const oldContentRep = offsetContent.impact;
+              this.retweet(user, offsetContent);
+              const newContentRep = offsetContent.impact;
+              assert(
+                oldContentRep < newContentRep,
+                'Bad Content replication evolution',
+              );
+              assert(
+                offsetContent.id === user.publicFeed[i % user.publicFeed.length].id,
+                'Different ids',
+              );
+              const verif = this.getContentByID(user.publicFeed[i % user.publicFeed.length].id);
+              if (verif) {
+                assert(
+                  offsetContent.impact === user.publicFeed[i % user.publicFeed.length].impact
+                    && offsetContent.impact === verif.impact,
+                  'Different Content  Replication',
+                );
+              }
+            }
+            i++;
+          }
+        }
       });
     }
 
@@ -106,7 +138,7 @@ export class OSN implements Subject {
     }
 
     /** ACTIONS */
-    post(user: User): void {
+    post(user: User): Content {
       // checks if the user is registred on the OSN
       this.checkUserRegistred(user);
       // User write Content and sends it to the OSN
@@ -114,11 +146,12 @@ export class OSN implements Subject {
 
       // pushes the newly generated post in the osn general feed
       this.feed.push(content);
+      return content;
     }
 
     private retweet(user:User, content:Content): void {
-      this.checkUserRegistred(user);
-      if (user.retweet(content)) { content.retweet(user.followers.length); }
+      user.retweet(content);
+      content.retweet(user.followers.length);
     }
 
     private fetchContent(user:User): void {
@@ -168,7 +201,7 @@ export class OSN implements Subject {
     }
 
     notify(): void {
-      console.log('Subject: Notifying observers...');
+      // console.log('Subject: Notifying observers...');
       this.observers.forEach((observer) => observer.update(this));
     }
 }

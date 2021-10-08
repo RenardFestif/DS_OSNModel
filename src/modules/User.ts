@@ -2,8 +2,7 @@ import Gaussian from 'ts-gaussian';
 import Flatted from 'flatted';
 import Content from './Content';
 import {
-  DEFAULT_RETWEET_TRESHOLD,
-  DEFAULT_SCORE, FAKE_RETWEET_MULTIPLICATOR_FACTOR, MU_NATURE, NATURE_MALICIOUS_THRESHOLD, NATURE_TRUTHFULL_THRESHOLD, SIGMA_NATURE,
+  DEFAULT_SCORE, MU_NATURE, NATURE_MALICIOUS_THRESHOLD, NATURE_TRUTHFULL_THRESHOLD, SIGMA_NATURE,
 } from './Constant';
 import { OSN } from './Osn';
 
@@ -67,6 +66,10 @@ export class User {
 
     /** MODIFIERS */
 
+    public resetPublicFeed() {
+      this._publicFeed = [];
+    }
+
     public initNature(): Nature {
       const distribution = new Gaussian(MU_NATURE, SIGMA_NATURE);
       const sample = distribution.ppf(Math.random());
@@ -83,26 +86,21 @@ export class User {
       this._followers.push(user);
     }
 
-    public retweet(content:Content): boolean {
-      if (!this.retweets.includes(content)) {
-        const multiplicator = content.veracity * FAKE_RETWEET_MULTIPLICATOR_FACTOR;
-        if (Math.random() > DEFAULT_RETWEET_TRESHOLD / multiplicator) {
-          this.retweets.push(content);
-          return true;
-        }
-      }
-      return false;
+    public retweet(content:Content): void {
+      this.retweets.push(content);
     }
 
     /** METHODS */
-    getNonAuthoredPublicFeed(): Array<Content> {
-      return this.publicFeed.filter((content) => content.author !== this);
+    sortedRetweetable(): Array<Content> {
+      return this.publicFeed.filter((content) => (!this.retweets.includes(content))).sort((a, b) => a.impact - b.impact);
     }
 
     /** USER ACTION FUNCTIONS */
 
     public writeContent(): Content {
-      return new Content(this);
+      const content = new Content(this);
+      this.privateFeed.push(content);
+      return content;
     }
 
     public rate(): void {

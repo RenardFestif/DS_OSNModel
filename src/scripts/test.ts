@@ -21,3 +21,5 @@ osn.post(usr3);
 osn.post(usr3);
 
 osn.attach(new DefaultPolicy());
+osn.fetchAll();
+osn.retweetAll();
