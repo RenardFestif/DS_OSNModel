@@ -35,11 +35,12 @@ export default function getRandomSubarray(arr : any[], size: number) {
 //   return snapshot;
 // }
 
+export const averageArray = (array:number[]) => array.reduce((a:number, b:number) => a + b) / array.length;
+
 export function contentReplicationDistributionByVeracity(osn: OSN): IContentReplicationDistribJSON {
   const data : [{veracity: number, contentReplication:number}] = [] as unknown as [{veracity: number, contentReplication:number}];
   const distrib : IContentReplicationDistribJSON = { data, totalUsers: NUMBER_USERS };
 
-  const average = (array:number[]) => array.reduce((a:number, b:number) => a + b) / array.length;
   osn.sortFeedByID();
   // eslint-disable-next-line no-undef
   const tmp = new Map();
@@ -53,7 +54,7 @@ export function contentReplicationDistributionByVeracity(osn: OSN): IContentRepl
   });
 
   tmp.forEach((contentRep, veracity) => {
-    const avgContentRep = average(contentRep);
+    const avgContentRep = averageArray(contentRep);
     distrib.data.push({ veracity, contentReplication: (avgContentRep / NUMBER_USERS) * 100 });
   });
 

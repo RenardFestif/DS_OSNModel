@@ -25,6 +25,14 @@ toPlot = {
         "title": "Final Content Replication Distribution",
         "plotType": "continuous",
     },
+    "Witness_InitialContentReplicationAveraged": {
+        "title": "Initial Content Replication Distribution Averaged",
+        "plotType": "continuous",
+    },
+    "Witness_FinalContentReplicationAveraged": {
+        "title": "Initial Content Replication Distribution Averaged",
+        "plotType": "continuous",
+    },
 }
 
 first = {"veracity": [], "contentReplication": [], "averages": {}}
@@ -165,7 +173,11 @@ for (key, value) in toPlot.items():
             last["averages"] = averages
 
         # PLOT EVOLUTION
-        if len(first["veracity"]) > 0 and len(last["veracity"]) > 0:
+        if (
+            len(first["veracity"]) > 0
+            and len(last["veracity"]) > 0
+            and key.__contains__("Final")
+        ):
 
             veracity = first["veracity"]
 
@@ -214,4 +226,4 @@ for (key, value) in toPlot.items():
             plt.xlabel("Percentage of veracity")
             plt.ylabel("Average content replication evolution")
             plt.title("Average evolutionn content replication by veracity")
-            plt.savefig("results/" + key + ".png")
+            plt.savefig("results/" + key + "Evolution.png")

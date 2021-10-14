@@ -17,7 +17,7 @@ export const PUBLIC_POSTS = 20;
 export const PUBLIC_THRESHOLD = 0.33;
 export const PUBLIC_SIGMA = 0.05;
 
-export const NUMBER_USERS = 500;
+export const NUMBER_USERS = 100;
 export const TOP_CONNECTED_PERCENTAGE = 33;
 export const SMOOTHER_PERCENTAGE = 1;
 export const MIN_Y_ADJUST = (SMOOTHER_PERCENTAGE / 100) * NUMBER_USERS;
@@ -32,3 +32,5 @@ export const FAKE_RETWEET_MULTIPLICATOR = 0.7;
 export const DEFAULT_FAKE_RETWEET_TRESHOLD = 0.5;
 
 export const AVERAGE_RETWEET_PER_USER_PER_UNIT_OF_TIME = 0.02;
+
+export const NB_ROUNDS_ANALYSIS = 10;
