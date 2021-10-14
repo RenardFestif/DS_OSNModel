@@ -16,5 +16,6 @@ export interface IContentVeracityDistribJSON{
 
 export interface IContentReplicationDistribJSON{
     data: [{ veracity: number, contentReplication: number }],
-    totalUsers : number
+    totalUsers : number,
+    nbSimul? : number
 }
