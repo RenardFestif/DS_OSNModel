@@ -63,6 +63,7 @@ export class User {
     public set publicFeed(publicFeed:Array<Content>) { this.publicFeed = publicFeed; }
     public set privateFeed(privateFeed:Array<Content>) { this.privateFeed = privateFeed; }
     public set retweets(retweets: Array<Content>) { this.retweets = retweets; }
+    public set nature(nature: Nature) { this._nature = nature; }
 
     /** MODIFIERS */
 

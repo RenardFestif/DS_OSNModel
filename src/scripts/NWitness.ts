@@ -1,16 +1,18 @@
 /**
- * SCENARIO #1
- * [WITNESS]
+ * SCENARIO #2
+ * [WITNESS Averaged on N simulation]
  *
  * OBJECTIVES:
  * Simulate the default behaviour of a twitter like social plateform upon some basic user action
  * (Register / Follow / Post / Fetch / Retweet)
+ * Analyse the averages results over N scenario
  *
  * PROTOCOL:
  * - Register N user
  * - Following according to the pareto distribution
  * - Post X content for each user
  * - I * ( Fetch & retweet )
+ * - Repeat N times
  *
  * - Mesure Content replication of a new post
  */

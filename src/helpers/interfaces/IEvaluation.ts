@@ -19,3 +19,7 @@ export interface IContentReplicationDistribJSON{
     totalUsers : number,
     nbSimul? : number
 }
+
+export interface IContentReplicationCaseJSON{
+    data : [{contentReplication : number}]
+}
