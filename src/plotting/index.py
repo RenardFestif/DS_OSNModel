@@ -3,40 +3,50 @@ import json
 import random
 from statistics import mean
 
+import numpy
+
 
 toPlot = {
-    "Witness_UserNatureDistrib": {
-        "title": "User Nature Distribution",
-        "plotType": "pie",
-    },
-    "Witness_FollowersDistrib": {
-        "title": "Connection Distribution across the network",
-        "plotType": "bar",
-    },
-    "Witness_ContentVeracityDistrib": {
-        "title": "Content veracity distribution",
-        "plotType": "continuous",
-    },
+    "Witness_UserNatureDistrib": {"title": "User Nature Distribution"},
+    "Witness_FollowersDistrib": {"title": "Connection Distribution across the network"},
+    "Witness_ContentVeracityDistrib": {"title": "Content veracity distribution"},
     "Witness_InitialContentReplication": {
-        "title": "Initial Content Replication Distribution",
-        "plotType": "continuous",
+        "title": "Initial Content Replication Distribution"
     },
     "Witness_FinalContentReplication": {
-        "title": "Final Content Replication Distribution",
-        "plotType": "continuous",
+        "title": "Final Content Replication Distribution"
     },
     "Witness_InitialContentReplicationAveraged": {
-        "title": "Initial Content Replication Distribution Averaged",
-        "plotType": "continuous",
+        "title": "Initial Content Replication Distribution Averaged"
     },
     "Witness_FinalContentReplicationAveraged": {
-        "title": "Initial Content Replication Distribution Averaged",
-        "plotType": "continuous",
+        "title": "Initial Content Replication Distribution Averaged"
+    },
+    "Witness_CaseComparisonTopConnected": {
+        "title": "Top Connected User's Content Replication"
+    },
+    "Witness_CaseComparisonAverageConnected": {
+        "title": "Average Connected User's Content Replication"
+    },
+    "Witness_CaseComparisonLessConnected": {
+        "title": "Less Connected User's Content Replication"
     },
 }
 
 first = {"veracity": [], "contentReplication": [], "averages": {}}
 last = {"veracity": [], "contentReplication": [], "averages": {}}
+
+initTopConnected = []
+maliciousTopConnected = []
+truthfullTopConnected = []
+
+initAverageConnected = []
+maliciousAverageConnected = []
+truthfullAverageConnected = []
+
+initLessConnected = []
+maliciousLessConnected = []
+truthfullLessConnected = []
 
 for (key, value) in toPlot.items():
 
@@ -227,3 +237,95 @@ for (key, value) in toPlot.items():
             plt.ylabel("Average content replication evolution")
             plt.title("Average evolutionn content replication by veracity")
             plt.savefig("results/" + key + "Evolution.png")
+
+    # WORST / BEST CASE SCENARIO
+    if key.__contains__("CaseComparison"):
+
+        if key.__contains__("CaseComparisonTopConnected"):
+            for ctRep in obj[0]["data"]:
+                initTopConnected.append(ctRep["contentReplication"])
+            for ctRep in obj[1]["data"]:
+                maliciousTopConnected.append(ctRep["contentReplication"])
+            for ctRep in obj[2]["data"]:
+                truthfullTopConnected.append(ctRep["contentReplication"])
+
+        if key.__contains__("CaseComparisonAverageConnected"):
+            for ctRep in obj[0]["data"]:
+                initAverageConnected.append(ctRep["contentReplication"])
+            for ctRep in obj[1]["data"]:
+                maliciousAverageConnected.append(ctRep["contentReplication"])
+            for ctRep in obj[2]["data"]:
+                truthfullAverageConnected.append(ctRep["contentReplication"])
+
+        if key.__contains__("CaseComparisonLessConnected"):
+            for ctRep in obj[0]["data"]:
+                initLessConnected.append(ctRep["contentReplication"])
+            for ctRep in obj[0]["data"]:
+                maliciousLessConnected.append(ctRep["contentReplication"])
+            for ctRep in obj[0]["data"]:
+                truthfullLessConnected.append(ctRep["contentReplication"])
+
+        if (
+            len(initTopConnected) > 0
+            and len(initAverageConnected) > 0
+            and len(initLessConnected) > 0
+            and len(maliciousTopConnected) > 0
+            and len(maliciousAverageConnected) > 0
+            and len(maliciousLessConnected) > 0
+            and len(truthfullTopConnected) > 0
+            and len(truthfullAverageConnected) > 0
+            and len(truthfullLessConnected) > 0
+        ):
+            initTopConnected = numpy.array(initTopConnected)
+            maliciousTopConnected = numpy.array(maliciousTopConnected)
+            truthfullTopConnected = numpy.array(truthfullTopConnected)
+            initAverageConnected = numpy.array(initAverageConnected)
+            maliciousAverageConnected = numpy.array(maliciousAverageConnected)
+            truthfullAverageConnected = numpy.array(truthfullAverageConnected)
+            initLessConnected = numpy.array(initLessConnected)
+            maliciousLessConnected = numpy.array(maliciousLessConnected)
+            truthfullLessConnected = numpy.array(truthfullLessConnected)
+
+            plt.close("all")
+
+            fig = plt.figure()
+            ax = fig.add_subplot()
+
+            bp = ax.boxplot(
+                [
+                    initTopConnected,
+                    maliciousTopConnected,
+                    truthfullTopConnected,
+                    initAverageConnected,
+                    maliciousAverageConnected,
+                    truthfullAverageConnected,
+                    initLessConnected,
+                    maliciousLessConnected,
+                    truthfullLessConnected,
+                ],
+                patch_artist=True,
+                vert=0,
+            )
+            plt.xscale("log")
+
+            ax.set_yticklabels(
+                [
+                    "Top Connected\nInitial Content Replication",
+                    "Top Connected\nMalicious User",
+                    "Top Connected\nTruthfull User",
+                    "Average Connected\nInitial Content Replication",
+                    "Average Connected\nMalicious User",
+                    "Average Connected\nTruthfull User",
+                    "Less Connected\nInitial Content Replication",
+                    "Less Connected\nMalicious User",
+                    "Less Connected\nTruthfull User",
+                ]
+            )
+            ax.get_xaxis().tick_bottom()
+            ax.get_yaxis().tick_left()
+
+            plt.xlabel("Content Replication over the Network")
+            plt.title("Worst and best case Scenario comparison")
+            # plt.savefig("results/" + key + ".png")
+
+            plt.show()

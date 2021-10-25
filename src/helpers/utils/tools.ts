@@ -1,7 +1,8 @@
 import { NUMBER_USERS } from '../../modules/Constant';
 import { OSN } from '../../modules/Osn';
-import { Nature, User } from '../../modules/User';
+import { User } from '../../modules/User';
 import {
+  IContentReplicationCaseJSON,
   IContentReplicationDistribJSON,
 } from '../interfaces/IEvaluation';
 
@@ -56,6 +57,17 @@ export function contentReplicationDistributionByVeracity(osn: OSN): IContentRepl
   tmp.forEach((contentRep, veracity) => {
     const avgContentRep = averageArray(contentRep);
     distrib.data.push({ veracity, contentReplication: (avgContentRep / NUMBER_USERS) * 100 });
+  });
+
+  return distrib;
+}
+
+export function getcontentReplicationCase(user: User): IContentReplicationCaseJSON {
+  const data : [{ contentReplication:number}] = [] as unknown as [{ contentReplication:number}];
+  const distrib : IContentReplicationCaseJSON = { data };
+
+  user.privateFeed.forEach((content) => {
+    data.push({ contentReplication: content.impact });
   });
 
   return distrib;
