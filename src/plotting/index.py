@@ -306,6 +306,7 @@ for (key, value) in toPlot.items():
                 patch_artist=True,
                 vert=0,
             )
+            plt.xscale("log")
 
             ax.set_yticklabels(
                 [
