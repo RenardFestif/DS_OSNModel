@@ -36,44 +36,50 @@
   {
     "data": [
       {
-        "contentReplication": 21
+        "contentReplication": 16
       },
       {
-        "contentReplication": 8
+        "contentReplication": 11
+      },
+      {
+        "contentReplication": 4
+      },
+      {
+        "contentReplication": 7
       },
       {
         "contentReplication": 5
       },
       {
-        "contentReplication": 7
+        "contentReplication": 17
       },
       {
-        "contentReplication": 7
-      },
-      {
-        "contentReplication": 6
+        "contentReplication": 5
       },
       {
         "contentReplication": 4
       },
       {
-        "contentReplication": 4
+        "contentReplication": 27
       },
       {
-        "contentReplication": 4
-      },
-      {
-        "contentReplication": 4
+        "contentReplication": 9
       }
     ]
   },
   {
     "data": [
       {
-        "contentReplication": 17
+        "contentReplication": 5
       },
       {
-        "contentReplication": 9
+        "contentReplication": 4
+      },
+      {
+        "contentReplication": 6
+      },
+      {
+        "contentReplication": 10
       },
       {
         "contentReplication": 5
@@ -82,22 +88,16 @@
         "contentReplication": 6
       },
       {
-        "contentReplication": 4
+        "contentReplication": 5
       },
       {
-        "contentReplication": 4
+        "contentReplication": 17
       },
       {
-        "contentReplication": 4
+        "contentReplication": 5
       },
       {
-        "contentReplication": 4
-      },
-      {
-        "contentReplication": 4
-      },
-      {
-        "contentReplication": 4
+        "contentReplication": 7
       }
     ]
   }

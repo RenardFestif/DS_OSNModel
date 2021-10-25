@@ -98,12 +98,11 @@ export class OSN implements Subject {
           // const retweetableContentSortedByImpact = user.sortedRetweetable();
           let rt = false;
           let i = 0;
-          // console.log(retweetableContentSortedByImpact.length);
+          // We determine a content to retweet based on the content replication and the veracity
           while (!rt) {
             const offsetContent = user.publicFeed[i % user.publicFeed.length];
-            const adjustedThreshold = DEFAULT_FAKE_RETWEET_TRESHOLD - ((((offsetContent.veracity * FAKE_RETWEET_MULTIPLICATOR) / 100) * DEFAULT_FAKE_RETWEET_TRESHOLD));
-            // console.log(adjustedThreshold, offsetContent.veracity, offsetContent.impact);
-            if (Math.random() <= adjustedThreshold) {
+            const adjustedThreshold = DEFAULT_FAKE_RETWEET_TRESHOLD - ((((offsetContent.veracity / 100) * FAKE_RETWEET_MULTIPLICATOR) * DEFAULT_FAKE_RETWEET_TRESHOLD));
+            if (Math.random() < adjustedThreshold) {
               rt = !rt;
               const oldContentRep = offsetContent.impact;
               this.retweet(user, offsetContent);
@@ -170,7 +169,7 @@ export class OSN implements Subject {
 
     follow(userSender: User, userReceiver: User): void | never {
       // check if both users are registred on the OSN
-      if (this.getUser(userSender.id) !== undefined && this.getUser(userReceiver.id) !== undefined) {
+      if (this.getUser(userSender.id) && this.getUser(userReceiver.id)) {
         userSender.follow(userReceiver);
         userReceiver.addFollower(userSender);
       } else {
