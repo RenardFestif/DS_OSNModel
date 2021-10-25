@@ -13,8 +13,8 @@ export const NATURE_MALICIOUS_THRESHOLD = MU_NATURE - (NATURE_TRUTHFULL_THRESHOL
 
 export const SIGMA_VERACITY = 0.05;
 
-export const PUBLIC_POSTS = 20;
-export const PUBLIC_THRESHOLD = 0.33;
+export const PUBLIC_POSTS = 30;
+export const PUBLIC_THRESHOLD = 0.5;
 export const PUBLIC_SIGMA = 0.05;
 
 export const NUMBER_USERS = 100;
@@ -25,13 +25,13 @@ export const MIN_Y_ADJUST = (SMOOTHER_PERCENTAGE / 100) * NUMBER_USERS;
 
 // Fist Approach we suppose that each user post the same amount of content
 export const POSTS_PER_USER = 10;
-export const NB_ROUNDS = 500;
+export const NB_ROUNDS = 1080;
 
 // Fake news are 70% more likely to be retweeted
 export const FAKE_RETWEET_MULTIPLICATOR = 0.7;
 
 // MORE THAN THAT THE USER RETWEETS
-export const DEFAULT_FAKE_RETWEET_TRESHOLD = 0.8;
+export const DEFAULT_FAKE_RETWEET_TRESHOLD = 0.2;
 
 export const AVERAGE_RETWEET_PER_USER_PER_UNIT_OF_TIME = 0.02;
 

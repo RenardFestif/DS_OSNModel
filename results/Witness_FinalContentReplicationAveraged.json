@@ -1,813 +1,814 @@
 {
   "data": [
     {
-      "veracity": 44,
-      "contentReplication": 6.595296231546231
-    },
-    {
-      "veracity": 77,
-      "contentReplication": 3.4501010101010103
-    },
-    {
-      "veracity": 46,
-      "contentReplication": 8.360270562770562
-    },
-    {
-      "veracity": 63,
-      "contentReplication": 5.670643939393939
-    },
-    {
-      "veracity": 66,
-      "contentReplication": 2.6126064213564204
-    },
-    {
-      "veracity": 41,
-      "contentReplication": 4.850631035631035
-    },
-    {
-      "veracity": 51,
-      "contentReplication": 5.528762838468721
+      "veracity": 83,
+      "contentReplication": 4.4310317460317465
     },
     {
       "veracity": 86,
-      "contentReplication": 5.45047619047619
-    },
-    {
-      "veracity": 96,
-      "contentReplication": 4.7716666666666665
+      "contentReplication": 4.648650793650793
     },
     {
       "veracity": 100,
-      "contentReplication": 3.394298810699509
-    },
-    {
-      "veracity": 47,
-      "contentReplication": 3.6186481900452483
-    },
-    {
-      "veracity": 97,
-      "contentReplication": 2.2071428571428577
-    },
-    {
-      "veracity": 78,
-      "contentReplication": 3.050119047619048
-    },
-    {
-      "veracity": 59,
-      "contentReplication": 4.690656565656566
-    },
-    {
-      "veracity": 83,
-      "contentReplication": 3.8536904761904767
-    },
-    {
-      "veracity": 76,
-      "contentReplication": 3.8101298701298703
-    },
-    {
-      "veracity": 53,
-      "contentReplication": 7.278348861283645
-    },
-    {
-      "veracity": 49,
-      "contentReplication": 4.970784975258659
-    },
-    {
-      "veracity": 0,
-      "contentReplication": 4.448920584555211
-    },
-    {
-      "veracity": 65,
-      "contentReplication": 3.993001443001443
-    },
-    {
-      "veracity": 81,
-      "contentReplication": 2.4353138528138527
-    },
-    {
-      "veracity": 24,
-      "contentReplication": 3.6888888888888887
-    },
-    {
-      "veracity": 28,
-      "contentReplication": 3.8109920634920633
-    },
-    {
-      "veracity": 58,
-      "contentReplication": 2.7155898770991653
-    },
-    {
-      "veracity": 33,
-      "contentReplication": 3.413181818181818
-    },
-    {
-      "veracity": 43,
-      "contentReplication": 4.059910555131143
-    },
-    {
-      "veracity": 55,
-      "contentReplication": 7.596798915738544
-    },
-    {
-      "veracity": 37,
-      "contentReplication": 4.891309523809523
-    },
-    {
-      "veracity": 14,
-      "contentReplication": 8.208531746031746
-    },
-    {
-      "veracity": 61,
-      "contentReplication": 4.131146867838044
-    },
-    {
-      "veracity": 71,
-      "contentReplication": 2.8975450937950944
-    },
-    {
-      "veracity": 68,
-      "contentReplication": 2.789368131868132
-    },
-    {
-      "veracity": 69,
-      "contentReplication": 3.2836904761904764
-    },
-    {
-      "veracity": 98,
-      "contentReplication": 1.8883333333333332
-    },
-    {
-      "veracity": 36,
-      "contentReplication": 3.9361417748917753
-    },
-    {
-      "veracity": 42,
-      "contentReplication": 3.0903170032581797
-    },
-    {
-      "veracity": 45,
-      "contentReplication": 4.711538706391648
-    },
-    {
-      "veracity": 25,
-      "contentReplication": 7.903001443001443
-    },
-    {
-      "veracity": 34,
-      "contentReplication": 3.4493584193584197
-    },
-    {
-      "veracity": 93,
-      "contentReplication": 2.9954761904761904
-    },
-    {
-      "veracity": 75,
-      "contentReplication": 2.653450715950716
-    },
-    {
-      "veracity": 62,
-      "contentReplication": 3.771515151515152
-    },
-    {
-      "veracity": 91,
-      "contentReplication": 3.342420634920635
-    },
-    {
-      "veracity": 94,
-      "contentReplication": 2.6606701940035276
-    },
-    {
-      "veracity": 72,
-      "contentReplication": 3.360753968253968
-    },
-    {
-      "veracity": 56,
-      "contentReplication": 5.545528499278499
-    },
-    {
-      "veracity": 26,
-      "contentReplication": 7.208534798534798
-    },
-    {
-      "veracity": 82,
-      "contentReplication": 4.6503768453768455
-    },
-    {
-      "veracity": 80,
-      "contentReplication": 2.587929292929293
-    },
-    {
-      "veracity": 31,
-      "contentReplication": 3.846940836940836
-    },
-    {
-      "veracity": 20,
-      "contentReplication": 3.1726587301587306
-    },
-    {
-      "veracity": 27,
-      "contentReplication": 6.4812828837828835
-    },
-    {
-      "veracity": 19,
-      "contentReplication": 1.688452380952381
-    },
-    {
-      "veracity": 16,
-      "contentReplication": 3.8864835164835165
-    },
-    {
-      "veracity": 30,
-      "contentReplication": 2.575514485514485
-    },
-    {
-      "veracity": 11,
-      "contentReplication": 6.887619047619047
-    },
-    {
-      "veracity": 7,
-      "contentReplication": 1.976388888888889
-    },
-    {
-      "veracity": 3,
-      "contentReplication": 7.584285714285713
-    },
-    {
-      "veracity": 9,
-      "contentReplication": 4.195
-    },
-    {
-      "veracity": 4,
-      "contentReplication": 4.0580952380952375
-    },
-    {
-      "veracity": 39,
-      "contentReplication": 2.2474020424020424
-    },
-    {
-      "veracity": 35,
-      "contentReplication": 6.588851981351981
-    },
-    {
-      "veracity": 2,
-      "contentReplication": 2.2533333333333334
-    },
-    {
-      "veracity": 74,
-      "contentReplication": 2.6888095238095238
-    },
-    {
-      "veracity": 57,
-      "contentReplication": 2.951593406593407
-    },
-    {
-      "veracity": 17,
-      "contentReplication": 4.896208513708514
-    },
-    {
-      "veracity": 88,
-      "contentReplication": 2.9761904761904767
-    },
-    {
-      "veracity": 23,
-      "contentReplication": 2.7395604395604396
-    },
-    {
-      "veracity": 73,
-      "contentReplication": 5.894908424908424
-    },
-    {
-      "veracity": 99,
-      "contentReplication": 2.6975000000000002
-    },
-    {
-      "veracity": 10,
-      "contentReplication": 11.847182539682539
-    },
-    {
-      "veracity": 21,
-      "contentReplication": 8.59936507936508
-    },
-    {
-      "veracity": 29,
-      "contentReplication": 13.334795759795762
-    },
-    {
-      "veracity": 5,
-      "contentReplication": 5.152380952380952
-    },
-    {
-      "veracity": 6,
-      "contentReplication": 1.6733333333333333
-    },
-    {
-      "veracity": 32,
-      "contentReplication": 2.809722222222222
-    },
-    {
-      "veracity": 87,
-      "contentReplication": 3.777431457431457
-    },
-    {
-      "veracity": 50,
-      "contentReplication": 4.105697945845005
-    },
-    {
-      "veracity": 60,
-      "contentReplication": 2.87999222999223
-    },
-    {
-      "veracity": 40,
-      "contentReplication": 5.233525641025641
-    },
-    {
-      "veracity": 13,
-      "contentReplication": 2.6
-    },
-    {
-      "veracity": 38,
-      "contentReplication": 5.331507936507936
-    },
-    {
-      "veracity": 52,
-      "contentReplication": 5.006734654234654
-    },
-    {
-      "veracity": 85,
-      "contentReplication": 1.4688095238095238
-    },
-    {
-      "veracity": 79,
-      "contentReplication": 3.3273260073260076
+      "contentReplication": 3.809920887273978
     },
     {
       "veracity": 22,
-      "contentReplication": 3.153106060606061
+      "contentReplication": 7.13993672993673
     },
     {
-      "veracity": 67,
-      "contentReplication": 1.9482905982905983
+      "veracity": 23,
+      "contentReplication": 9.776049783549782
     },
     {
-      "veracity": 54,
-      "contentReplication": 4.291978021978023
+      "veracity": 27,
+      "contentReplication": 13.281557315233783
     },
     {
-      "veracity": 90,
-      "contentReplication": 3.8108333333333335
+      "veracity": 88,
+      "contentReplication": 3.2923809523809524
     },
     {
-      "veracity": 64,
-      "contentReplication": 3.494660894660895
+      "veracity": 60,
+      "contentReplication": 6.282390926067396
     },
     {
-      "veracity": 92,
-      "contentReplication": 2.765714285714286
+      "veracity": 31,
+      "contentReplication": 5.369607843137255
     },
     {
-      "veracity": 70,
-      "contentReplication": 2.591547619047619
+      "veracity": 13,
+      "contentReplication": 16.119444444444447
     },
     {
-      "veracity": 8,
-      "contentReplication": 5.421904761904762
+      "veracity": 0,
+      "contentReplication": 8.815458872482909
     },
     {
-      "veracity": 18,
-      "contentReplication": 4.678344155844156
+      "veracity": 3,
+      "contentReplication": 16.420436507936508
     },
     {
-      "veracity": 48,
-      "contentReplication": 4.56896061454885
+      "veracity": 25,
+      "contentReplication": 7.771111111111111
     },
     {
-      "veracity": 89,
-      "contentReplication": 2.216190476190476
+      "veracity": 9,
+      "contentReplication": 8.04904761904762
     },
     {
-      "veracity": 15,
-      "contentReplication": 1.7433333333333334
+      "veracity": 30,
+      "contentReplication": 5.612205572205572
     },
     {
-      "veracity": 84,
-      "contentReplication": 7.1875
-    },
-    {
-      "veracity": 1,
-      "contentReplication": 1.8009523809523809
-    },
-    {
-      "veracity": 95,
-      "contentReplication": 2.2035714285714283
+      "veracity": 24,
+      "contentReplication": 7.750912698412698
     },
     {
       "veracity": 12,
-      "contentReplication": 3.836634199134199
+      "contentReplication": 6.632380952380953
     },
     {
-      "veracity": 44,
-      "contentReplication": 6.595296231546231
+      "veracity": 17,
+      "contentReplication": 10.351114718614719
     },
     {
-      "veracity": 77,
-      "contentReplication": 3.4501010101010103
+      "veracity": 8,
+      "contentReplication": 8.46142857142857
     },
     {
-      "veracity": 46,
-      "contentReplication": 8.360270562770562
-    },
-    {
-      "veracity": 63,
-      "contentReplication": 5.670643939393939
-    },
-    {
-      "veracity": 66,
-      "contentReplication": 2.6126064213564204
+      "veracity": 54,
+      "contentReplication": 7.595188806291747
     },
     {
       "veracity": 41,
-      "contentReplication": 4.850631035631035
-    },
-    {
-      "veracity": 51,
-      "contentReplication": 5.528762838468721
-    },
-    {
-      "veracity": 86,
-      "contentReplication": 5.45047619047619
-    },
-    {
-      "veracity": 96,
-      "contentReplication": 4.7716666666666665
-    },
-    {
-      "veracity": 100,
-      "contentReplication": 3.394298810699509
-    },
-    {
-      "veracity": 47,
-      "contentReplication": 3.6186481900452483
-    },
-    {
-      "veracity": 97,
-      "contentReplication": 2.2071428571428577
-    },
-    {
-      "veracity": 78,
-      "contentReplication": 3.050119047619048
-    },
-    {
-      "veracity": 59,
-      "contentReplication": 4.690656565656566
-    },
-    {
-      "veracity": 83,
-      "contentReplication": 3.8536904761904767
-    },
-    {
-      "veracity": 76,
-      "contentReplication": 3.8101298701298703
-    },
-    {
-      "veracity": 53,
-      "contentReplication": 7.278348861283645
-    },
-    {
-      "veracity": 49,
-      "contentReplication": 4.970784975258659
-    },
-    {
-      "veracity": 0,
-      "contentReplication": 4.448920584555211
-    },
-    {
-      "veracity": 65,
-      "contentReplication": 3.993001443001443
-    },
-    {
-      "veracity": 81,
-      "contentReplication": 2.4353138528138527
-    },
-    {
-      "veracity": 24,
-      "contentReplication": 3.6888888888888887
-    },
-    {
-      "veracity": 28,
-      "contentReplication": 3.8109920634920633
-    },
-    {
-      "veracity": 58,
-      "contentReplication": 2.7155898770991653
-    },
-    {
-      "veracity": 33,
-      "contentReplication": 3.413181818181818
-    },
-    {
-      "veracity": 43,
-      "contentReplication": 4.059910555131143
-    },
-    {
-      "veracity": 55,
-      "contentReplication": 7.596798915738544
-    },
-    {
-      "veracity": 37,
-      "contentReplication": 4.891309523809523
-    },
-    {
-      "veracity": 14,
-      "contentReplication": 8.208531746031746
-    },
-    {
-      "veracity": 61,
-      "contentReplication": 4.131146867838044
-    },
-    {
-      "veracity": 71,
-      "contentReplication": 2.8975450937950944
-    },
-    {
-      "veracity": 68,
-      "contentReplication": 2.789368131868132
-    },
-    {
-      "veracity": 69,
-      "contentReplication": 3.2836904761904764
-    },
-    {
-      "veracity": 98,
-      "contentReplication": 1.8883333333333332
-    },
-    {
-      "veracity": 36,
-      "contentReplication": 3.9361417748917753
-    },
-    {
-      "veracity": 42,
-      "contentReplication": 3.0903170032581797
-    },
-    {
-      "veracity": 45,
-      "contentReplication": 4.711538706391648
-    },
-    {
-      "veracity": 25,
-      "contentReplication": 7.903001443001443
-    },
-    {
-      "veracity": 34,
-      "contentReplication": 3.4493584193584197
-    },
-    {
-      "veracity": 93,
-      "contentReplication": 2.9954761904761904
-    },
-    {
-      "veracity": 75,
-      "contentReplication": 2.653450715950716
-    },
-    {
-      "veracity": 62,
-      "contentReplication": 3.771515151515152
-    },
-    {
-      "veracity": 91,
-      "contentReplication": 3.342420634920635
-    },
-    {
-      "veracity": 94,
-      "contentReplication": 2.6606701940035276
-    },
-    {
-      "veracity": 72,
-      "contentReplication": 3.360753968253968
-    },
-    {
-      "veracity": 56,
-      "contentReplication": 5.545528499278499
-    },
-    {
-      "veracity": 26,
-      "contentReplication": 7.208534798534798
-    },
-    {
-      "veracity": 82,
-      "contentReplication": 4.6503768453768455
-    },
-    {
-      "veracity": 80,
-      "contentReplication": 2.587929292929293
-    },
-    {
-      "veracity": 31,
-      "contentReplication": 3.846940836940836
-    },
-    {
-      "veracity": 20,
-      "contentReplication": 3.1726587301587306
-    },
-    {
-      "veracity": 27,
-      "contentReplication": 6.4812828837828835
-    },
-    {
-      "veracity": 19,
-      "contentReplication": 1.688452380952381
-    },
-    {
-      "veracity": 16,
-      "contentReplication": 3.8864835164835165
-    },
-    {
-      "veracity": 30,
-      "contentReplication": 2.575514485514485
-    },
-    {
-      "veracity": 11,
-      "contentReplication": 6.887619047619047
-    },
-    {
-      "veracity": 7,
-      "contentReplication": 1.976388888888889
-    },
-    {
-      "veracity": 3,
-      "contentReplication": 7.584285714285713
-    },
-    {
-      "veracity": 9,
-      "contentReplication": 4.195
-    },
-    {
-      "veracity": 4,
-      "contentReplication": 4.0580952380952375
-    },
-    {
-      "veracity": 39,
-      "contentReplication": 2.2474020424020424
-    },
-    {
-      "veracity": 35,
-      "contentReplication": 6.588851981351981
-    },
-    {
-      "veracity": 2,
-      "contentReplication": 2.2533333333333334
-    },
-    {
-      "veracity": 74,
-      "contentReplication": 2.6888095238095238
-    },
-    {
-      "veracity": 57,
-      "contentReplication": 2.951593406593407
-    },
-    {
-      "veracity": 17,
-      "contentReplication": 4.896208513708514
-    },
-    {
-      "veracity": 88,
-      "contentReplication": 2.9761904761904767
-    },
-    {
-      "veracity": 23,
-      "contentReplication": 2.7395604395604396
-    },
-    {
-      "veracity": 73,
-      "contentReplication": 5.894908424908424
-    },
-    {
-      "veracity": 99,
-      "contentReplication": 2.6975000000000002
-    },
-    {
-      "veracity": 10,
-      "contentReplication": 11.847182539682539
-    },
-    {
-      "veracity": 21,
-      "contentReplication": 8.59936507936508
-    },
-    {
-      "veracity": 29,
-      "contentReplication": 13.334795759795762
-    },
-    {
-      "veracity": 5,
-      "contentReplication": 5.152380952380952
+      "contentReplication": 8.252916666666668
     },
     {
       "veracity": 6,
-      "contentReplication": 1.6733333333333333
+      "contentReplication": 12.53111111111111
     },
     {
-      "veracity": 32,
-      "contentReplication": 2.809722222222222
+      "veracity": 68,
+      "contentReplication": 4.059044289044289
     },
     {
-      "veracity": 87,
-      "contentReplication": 3.777431457431457
-    },
-    {
-      "veracity": 50,
-      "contentReplication": 4.105697945845005
-    },
-    {
-      "veracity": 60,
-      "contentReplication": 2.87999222999223
+      "veracity": 51,
+      "contentReplication": 6.985196053946053
     },
     {
       "veracity": 40,
-      "contentReplication": 5.233525641025641
-    },
-    {
-      "veracity": 13,
-      "contentReplication": 2.6
-    },
-    {
-      "veracity": 38,
-      "contentReplication": 5.331507936507936
-    },
-    {
-      "veracity": 52,
-      "contentReplication": 5.006734654234654
-    },
-    {
-      "veracity": 85,
-      "contentReplication": 1.4688095238095238
-    },
-    {
-      "veracity": 79,
-      "contentReplication": 3.3273260073260076
-    },
-    {
-      "veracity": 22,
-      "contentReplication": 3.153106060606061
-    },
-    {
-      "veracity": 67,
-      "contentReplication": 1.9482905982905983
-    },
-    {
-      "veracity": 54,
-      "contentReplication": 4.291978021978023
-    },
-    {
-      "veracity": 90,
-      "contentReplication": 3.8108333333333335
-    },
-    {
-      "veracity": 64,
-      "contentReplication": 3.494660894660895
-    },
-    {
-      "veracity": 92,
-      "contentReplication": 2.765714285714286
-    },
-    {
-      "veracity": 70,
-      "contentReplication": 2.591547619047619
-    },
-    {
-      "veracity": 8,
-      "contentReplication": 5.421904761904762
-    },
-    {
-      "veracity": 18,
-      "contentReplication": 4.678344155844156
+      "contentReplication": 8.07150738150738
     },
     {
       "veracity": 48,
-      "contentReplication": 4.56896061454885
+      "contentReplication": 6.338523581681476
     },
     {
-      "veracity": 89,
-      "contentReplication": 2.216190476190476
+      "veracity": 63,
+      "contentReplication": 6.861190476190477
     },
     {
-      "veracity": 15,
-      "contentReplication": 1.7433333333333334
+      "veracity": 56,
+      "contentReplication": 7.0152442002442
+    },
+    {
+      "veracity": 59,
+      "contentReplication": 6.221848984348985
+    },
+    {
+      "veracity": 43,
+      "contentReplication": 7.762705661211854
     },
     {
       "veracity": 84,
-      "contentReplication": 7.1875
+      "contentReplication": 4.4107142857142865
     },
     {
-      "veracity": 1,
-      "contentReplication": 1.8009523809523809
+      "veracity": 76,
+      "contentReplication": 7.044166666666667
+    },
+    {
+      "veracity": 67,
+      "contentReplication": 5.154116112645525
+    },
+    {
+      "veracity": 65,
+      "contentReplication": 3.9594300144300143
+    },
+    {
+      "veracity": 14,
+      "contentReplication": 7.705873015873015
+    },
+    {
+      "veracity": 91,
+      "contentReplication": 5.085952380952381
+    },
+    {
+      "veracity": 20,
+      "contentReplication": 6.188611111111111
+    },
+    {
+      "veracity": 87,
+      "contentReplication": 5.870476190476191
+    },
+    {
+      "veracity": 98,
+      "contentReplication": 2.8933333333333335
+    },
+    {
+      "veracity": 64,
+      "contentReplication": 5.127554037809456
+    },
+    {
+      "veracity": 28,
+      "contentReplication": 8.255382395382394
+    },
+    {
+      "veracity": 16,
+      "contentReplication": 11.995000000000001
+    },
+    {
+      "veracity": 37,
+      "contentReplication": 9.613852813852816
+    },
+    {
+      "veracity": 61,
+      "contentReplication": 5.306654783125372
+    },
+    {
+      "veracity": 72,
+      "contentReplication": 4.85138888888889
+    },
+    {
+      "veracity": 52,
+      "contentReplication": 6.368981018981019
+    },
+    {
+      "veracity": 74,
+      "contentReplication": 4.801230158730158
+    },
+    {
+      "veracity": 77,
+      "contentReplication": 3.5935714285714284
+    },
+    {
+      "veracity": 70,
+      "contentReplication": 5.571541236541236
+    },
+    {
+      "veracity": 46,
+      "contentReplication": 9.734748234221918
+    },
+    {
+      "veracity": 42,
+      "contentReplication": 6.101204073704073
+    },
+    {
+      "veracity": 44,
+      "contentReplication": 7.498439517998342
+    },
+    {
+      "veracity": 29,
+      "contentReplication": 5.6333653846153835
+    },
+    {
+      "veracity": 82,
+      "contentReplication": 3.41281746031746
+    },
+    {
+      "veracity": 62,
+      "contentReplication": 6.424509803921569
+    },
+    {
+      "veracity": 93,
+      "contentReplication": 4.752380952380952
+    },
+    {
+      "veracity": 53,
+      "contentReplication": 9.22019536019536
+    },
+    {
+      "veracity": 92,
+      "contentReplication": 4.158571428571428
+    },
+    {
+      "veracity": 10,
+      "contentReplication": 7.20797619047619
+    },
+    {
+      "veracity": 15,
+      "contentReplication": 6.359166666666666
+    },
+    {
+      "veracity": 50,
+      "contentReplication": 6.4015115440115435
+    },
+    {
+      "veracity": 47,
+      "contentReplication": 5.8196521778874715
+    },
+    {
+      "veracity": 75,
+      "contentReplication": 8.671782106782107
+    },
+    {
+      "veracity": 71,
+      "contentReplication": 6.693099123099122
+    },
+    {
+      "veracity": 78,
+      "contentReplication": 5.872698412698413
+    },
+    {
+      "veracity": 89,
+      "contentReplication": 3.149130591630591
+    },
+    {
+      "veracity": 73,
+      "contentReplication": 4.337857142857142
+    },
+    {
+      "veracity": 69,
+      "contentReplication": 4.931727994227995
+    },
+    {
+      "veracity": 7,
+      "contentReplication": 7.800454545454545
+    },
+    {
+      "veracity": 11,
+      "contentReplication": 10.988347763347761
+    },
+    {
+      "veracity": 2,
+      "contentReplication": 9.001666666666667
+    },
+    {
+      "veracity": 21,
+      "contentReplication": 6.756190476190476
+    },
+    {
+      "veracity": 36,
+      "contentReplication": 8.77316822066822
+    },
+    {
+      "veracity": 33,
+      "contentReplication": 11.994498556998558
+    },
+    {
+      "veracity": 19,
+      "contentReplication": 9.389047619047618
+    },
+    {
+      "veracity": 79,
+      "contentReplication": 4.68989898989899
+    },
+    {
+      "veracity": 57,
+      "contentReplication": 6.463334582084582
+    },
+    {
+      "veracity": 39,
+      "contentReplication": 7.152953296703298
+    },
+    {
+      "veracity": 18,
+      "contentReplication": 7.538333333333332
+    },
+    {
+      "veracity": 38,
+      "contentReplication": 5.606437728937729
+    },
+    {
+      "veracity": 58,
+      "contentReplication": 7.3449267399267395
+    },
+    {
+      "veracity": 4,
+      "contentReplication": 8.940833333333334
+    },
+    {
+      "veracity": 90,
+      "contentReplication": 2.7211904761904764
+    },
+    {
+      "veracity": 96,
+      "contentReplication": 3.21
+    },
+    {
+      "veracity": 5,
+      "contentReplication": 7.192380952380953
+    },
+    {
+      "veracity": 49,
+      "contentReplication": 7.945734020881079
+    },
+    {
+      "veracity": 55,
+      "contentReplication": 5.987777777777778
+    },
+    {
+      "veracity": 81,
+      "contentReplication": 5.331190476190477
     },
     {
       "veracity": 95,
-      "contentReplication": 2.2035714285714283
+      "contentReplication": 3.2766666666666664
+    },
+    {
+      "veracity": 85,
+      "contentReplication": 4.25015873015873
+    },
+    {
+      "veracity": 80,
+      "contentReplication": 3.9450000000000003
+    },
+    {
+      "veracity": 45,
+      "contentReplication": 6.201969741644664
+    },
+    {
+      "veracity": 26,
+      "contentReplication": 7.2677602952602935
+    },
+    {
+      "veracity": 32,
+      "contentReplication": 6.550266955266954
+    },
+    {
+      "veracity": 1,
+      "contentReplication": 13.963095238095239
+    },
+    {
+      "veracity": 66,
+      "contentReplication": 5.436770435446905
+    },
+    {
+      "veracity": 97,
+      "contentReplication": 3.4733333333333336
+    },
+    {
+      "veracity": 34,
+      "contentReplication": 4.962369297369297
+    },
+    {
+      "veracity": 94,
+      "contentReplication": 2.466666666666667
+    },
+    {
+      "veracity": 99,
+      "contentReplication": 3.0533333333333337
+    },
+    {
+      "veracity": 35,
+      "contentReplication": 7.591400266400266
+    },
+    {
+      "veracity": 83,
+      "contentReplication": 4.4310317460317465
+    },
+    {
+      "veracity": 86,
+      "contentReplication": 4.648650793650793
+    },
+    {
+      "veracity": 100,
+      "contentReplication": 3.809920887273978
+    },
+    {
+      "veracity": 22,
+      "contentReplication": 7.13993672993673
+    },
+    {
+      "veracity": 23,
+      "contentReplication": 9.776049783549782
+    },
+    {
+      "veracity": 27,
+      "contentReplication": 13.281557315233783
+    },
+    {
+      "veracity": 88,
+      "contentReplication": 3.2923809523809524
+    },
+    {
+      "veracity": 60,
+      "contentReplication": 6.282390926067396
+    },
+    {
+      "veracity": 31,
+      "contentReplication": 5.369607843137255
+    },
+    {
+      "veracity": 13,
+      "contentReplication": 16.119444444444447
+    },
+    {
+      "veracity": 0,
+      "contentReplication": 8.815458872482909
+    },
+    {
+      "veracity": 3,
+      "contentReplication": 16.420436507936508
+    },
+    {
+      "veracity": 25,
+      "contentReplication": 7.771111111111111
+    },
+    {
+      "veracity": 9,
+      "contentReplication": 8.04904761904762
+    },
+    {
+      "veracity": 30,
+      "contentReplication": 5.612205572205572
+    },
+    {
+      "veracity": 24,
+      "contentReplication": 7.750912698412698
     },
     {
       "veracity": 12,
-      "contentReplication": 3.836634199134199
+      "contentReplication": 6.632380952380953
+    },
+    {
+      "veracity": 17,
+      "contentReplication": 10.351114718614719
+    },
+    {
+      "veracity": 8,
+      "contentReplication": 8.46142857142857
+    },
+    {
+      "veracity": 54,
+      "contentReplication": 7.595188806291747
+    },
+    {
+      "veracity": 41,
+      "contentReplication": 8.252916666666668
+    },
+    {
+      "veracity": 6,
+      "contentReplication": 12.53111111111111
+    },
+    {
+      "veracity": 68,
+      "contentReplication": 4.059044289044289
+    },
+    {
+      "veracity": 51,
+      "contentReplication": 6.985196053946053
+    },
+    {
+      "veracity": 40,
+      "contentReplication": 8.07150738150738
+    },
+    {
+      "veracity": 48,
+      "contentReplication": 6.338523581681476
+    },
+    {
+      "veracity": 63,
+      "contentReplication": 6.861190476190477
+    },
+    {
+      "veracity": 56,
+      "contentReplication": 7.0152442002442
+    },
+    {
+      "veracity": 59,
+      "contentReplication": 6.221848984348985
+    },
+    {
+      "veracity": 43,
+      "contentReplication": 7.762705661211854
+    },
+    {
+      "veracity": 84,
+      "contentReplication": 4.4107142857142865
+    },
+    {
+      "veracity": 76,
+      "contentReplication": 7.044166666666667
+    },
+    {
+      "veracity": 67,
+      "contentReplication": 5.154116112645525
+    },
+    {
+      "veracity": 65,
+      "contentReplication": 3.9594300144300143
+    },
+    {
+      "veracity": 14,
+      "contentReplication": 7.705873015873015
+    },
+    {
+      "veracity": 91,
+      "contentReplication": 5.085952380952381
+    },
+    {
+      "veracity": 20,
+      "contentReplication": 6.188611111111111
+    },
+    {
+      "veracity": 87,
+      "contentReplication": 5.870476190476191
+    },
+    {
+      "veracity": 98,
+      "contentReplication": 2.8933333333333335
+    },
+    {
+      "veracity": 64,
+      "contentReplication": 5.127554037809456
+    },
+    {
+      "veracity": 28,
+      "contentReplication": 8.255382395382394
+    },
+    {
+      "veracity": 16,
+      "contentReplication": 11.995000000000001
+    },
+    {
+      "veracity": 37,
+      "contentReplication": 9.613852813852816
+    },
+    {
+      "veracity": 61,
+      "contentReplication": 5.306654783125372
+    },
+    {
+      "veracity": 72,
+      "contentReplication": 4.85138888888889
+    },
+    {
+      "veracity": 52,
+      "contentReplication": 6.368981018981019
+    },
+    {
+      "veracity": 74,
+      "contentReplication": 4.801230158730158
+    },
+    {
+      "veracity": 77,
+      "contentReplication": 3.5935714285714284
+    },
+    {
+      "veracity": 70,
+      "contentReplication": 5.571541236541236
+    },
+    {
+      "veracity": 46,
+      "contentReplication": 9.734748234221918
+    },
+    {
+      "veracity": 42,
+      "contentReplication": 6.101204073704073
+    },
+    {
+      "veracity": 44,
+      "contentReplication": 7.498439517998342
+    },
+    {
+      "veracity": 29,
+      "contentReplication": 5.6333653846153835
+    },
+    {
+      "veracity": 82,
+      "contentReplication": 3.41281746031746
+    },
+    {
+      "veracity": 62,
+      "contentReplication": 6.424509803921569
+    },
+    {
+      "veracity": 93,
+      "contentReplication": 4.752380952380952
+    },
+    {
+      "veracity": 53,
+      "contentReplication": 9.22019536019536
+    },
+    {
+      "veracity": 92,
+      "contentReplication": 4.158571428571428
+    },
+    {
+      "veracity": 10,
+      "contentReplication": 7.20797619047619
+    },
+    {
+      "veracity": 15,
+      "contentReplication": 6.359166666666666
+    },
+    {
+      "veracity": 50,
+      "contentReplication": 6.4015115440115435
+    },
+    {
+      "veracity": 47,
+      "contentReplication": 5.8196521778874715
+    },
+    {
+      "veracity": 75,
+      "contentReplication": 8.671782106782107
+    },
+    {
+      "veracity": 71,
+      "contentReplication": 6.693099123099122
+    },
+    {
+      "veracity": 78,
+      "contentReplication": 5.872698412698413
+    },
+    {
+      "veracity": 89,
+      "contentReplication": 3.149130591630591
+    },
+    {
+      "veracity": 73,
+      "contentReplication": 4.337857142857142
+    },
+    {
+      "veracity": 69,
+      "contentReplication": 4.931727994227995
+    },
+    {
+      "veracity": 7,
+      "contentReplication": 7.800454545454545
+    },
+    {
+      "veracity": 11,
+      "contentReplication": 10.988347763347761
+    },
+    {
+      "veracity": 2,
+      "contentReplication": 9.001666666666667
+    },
+    {
+      "veracity": 21,
+      "contentReplication": 6.756190476190476
+    },
+    {
+      "veracity": 36,
+      "contentReplication": 8.77316822066822
+    },
+    {
+      "veracity": 33,
+      "contentReplication": 11.994498556998558
+    },
+    {
+      "veracity": 19,
+      "contentReplication": 9.389047619047618
+    },
+    {
+      "veracity": 79,
+      "contentReplication": 4.68989898989899
+    },
+    {
+      "veracity": 57,
+      "contentReplication": 6.463334582084582
+    },
+    {
+      "veracity": 39,
+      "contentReplication": 7.152953296703298
+    },
+    {
+      "veracity": 18,
+      "contentReplication": 7.538333333333332
+    },
+    {
+      "veracity": 38,
+      "contentReplication": 5.606437728937729
+    },
+    {
+      "veracity": 58,
+      "contentReplication": 7.3449267399267395
+    },
+    {
+      "veracity": 4,
+      "contentReplication": 8.940833333333334
+    },
+    {
+      "veracity": 90,
+      "contentReplication": 2.7211904761904764
+    },
+    {
+      "veracity": 96,
+      "contentReplication": 3.21
+    },
+    {
+      "veracity": 5,
+      "contentReplication": 7.192380952380953
+    },
+    {
+      "veracity": 49,
+      "contentReplication": 7.945734020881079
+    },
+    {
+      "veracity": 55,
+      "contentReplication": 5.987777777777778
+    },
+    {
+      "veracity": 81,
+      "contentReplication": 5.331190476190477
+    },
+    {
+      "veracity": 95,
+      "contentReplication": 3.2766666666666664
+    },
+    {
+      "veracity": 85,
+      "contentReplication": 4.25015873015873
+    },
+    {
+      "veracity": 80,
+      "contentReplication": 3.9450000000000003
+    },
+    {
+      "veracity": 45,
+      "contentReplication": 6.201969741644664
+    },
+    {
+      "veracity": 26,
+      "contentReplication": 7.2677602952602935
+    },
+    {
+      "veracity": 32,
+      "contentReplication": 6.550266955266954
+    },
+    {
+      "veracity": 1,
+      "contentReplication": 13.963095238095239
+    },
+    {
+      "veracity": 66,
+      "contentReplication": 5.436770435446905
+    },
+    {
+      "veracity": 97,
+      "contentReplication": 3.4733333333333336
+    },
+    {
+      "veracity": 34,
+      "contentReplication": 4.962369297369297
+    },
+    {
+      "veracity": 94,
+      "contentReplication": 2.466666666666667
+    },
+    {
+      "veracity": 99,
+      "contentReplication": 3.0533333333333337
+    },
+    {
+      "veracity": 35,
+      "contentReplication": 7.591400266400266
     }
   ],
-  "totalUsers": 100
+  "totalUsers": 100,
+  "nbSimul": 10
 }

@@ -62,7 +62,7 @@ export default class DefaultPolicy implements Observer {
           }
         });
       }
-
+      user.publicFeed.sort(() => ((Math.random() > 0.5) ? 1 : -1));
       assert(
         user.publicFeed.length === PUBLIC_POSTS + user.follows.length * POSTS_PER_USER,
         `Publicfeed length = ${user.publicFeed.length} does not match ${PUBLIC_POSTS + user.follows.length * POSTS_PER_USER} `,

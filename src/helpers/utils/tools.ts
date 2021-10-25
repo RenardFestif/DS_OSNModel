@@ -78,3 +78,9 @@ export function assert(condition : boolean, message: string) {
     throw new Error(message || 'Assertion failed');
   }
 }
+
+export function shuffle(ar: any[]) {
+  // eslint-disable-next-line no-param-reassign
+  for (let j:number, x:any, i:number = ar.length; i; j = Math.floor(Math.random() * i), x = ar[--i], ar[i] = ar[j], ar[j] = x);
+  return ar;
+}
