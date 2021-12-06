@@ -20,7 +20,7 @@ toPlot = {
         "title": "Initial Content Replication Distribution Averaged"
     },
     "Witness_FinalContentReplicationAveraged": {
-        "title": "Initial Content Replication Distribution Averaged"
+        "title": "Final Content Replication Distribution Averaged"
     },
     "Witness_CaseComparisonTopConnected": {
         "title": "Top Connected User's Content Replication"
@@ -31,10 +31,38 @@ toPlot = {
     "Witness_CaseComparisonLessConnected": {
         "title": "Less Connected User's Content Replication"
     },
+    "Scored_ContentVeracityDistrib": {
+        "title": "Content veracity distribution (Scored)"
+    },
+    "Scored_FollowersDistrib": {
+        "title": "Connection Distribution across the network (Scored)"
+    },
+    "Scored_InitialContentReplication": {
+        "title": "Initial Content Replication Distribution (Scored)"
+    },
+    "Scored_FinalContentReplication": {
+        "title": "Final Content Replication Distribution (Scored)"
+    },
+    "Scored_UserNatureDistrib": {"title": "User Nature Distribution (Scored)"},
+    "Scored_InitialContentReplicationAveraged": {
+        "title": "Initial Content Replication Distribution Averaged (Scored)"
+    },
+    "Scored_FinalContentReplicationAveraged": {
+        "title": "Final Content Replication Distribution Averaged (Scored) "
+    },
+    "Scored_CaseComparisonTopConnected": {
+        "title": "Top Connected User's Content Replication (Scored)"
+    },
+    "Scored_CaseComparisonAverageConnected": {
+        "title": "Average Connected User's Content Replication (Scored)"
+    },
+    "Scored_CaseComparisonLessConnected": {
+        "title": "Less Connected User's Content Replication (Scored)"
+    },
 }
 
-first = {"veracity": [], "contentReplication": [], "averages": {}}
-last = {"veracity": [], "contentReplication": [], "averages": {}}
+first = {}
+last = {}
 
 initTopConnected = []
 maliciousTopConnected = []
@@ -174,20 +202,18 @@ for (key, value) in toPlot.items():
         plt.savefig("results/" + key + ".png")
 
         if key.__contains__("Initial"):
+            first = {"veracity": [], "contentReplication": [], "averages": {}}
             first["veracity"] = veracity
             first["contentReplication"] = contentReplication
             first["averages"] = averages
         if key.__contains__("Final"):
+            last = {"veracity": [], "contentReplication": [], "averages": {}}
             last["veracity"] = veracity
             last["contentReplication"] = contentReplication
             last["averages"] = averages
 
         # PLOT EVOLUTION
-        if (
-            len(first["veracity"]) > 0
-            and len(last["veracity"]) > 0
-            and key.__contains__("Final")
-        ):
+        if len(first.keys()) > 0 and len(last.keys()) > 0 and key.__contains__("Final"):
 
             veracity = first["veracity"]
 
@@ -235,13 +261,16 @@ for (key, value) in toPlot.items():
 
             plt.xlabel("Percentage of veracity")
             plt.ylabel("Average content replication evolution")
-            plt.title("Average evolutionn content replication by veracity")
+            plt.title("Average evolution of the content replication by veracity")
             plt.savefig("results/" + key + "Evolution.png")
 
     # WORST / BEST CASE SCENARIO
     if key.__contains__("CaseComparison"):
 
         if key.__contains__("CaseComparisonTopConnected"):
+            initTopConnected = []
+            maliciousTopConnected = []
+            truthfullTopConnected = []
             for ctRep in obj[0]["data"]:
                 initTopConnected.append(ctRep["contentReplication"])
             for ctRep in obj[1]["data"]:
@@ -250,6 +279,9 @@ for (key, value) in toPlot.items():
                 truthfullTopConnected.append(ctRep["contentReplication"])
 
         if key.__contains__("CaseComparisonAverageConnected"):
+            initAverageConnected = []
+            maliciousAverageConnected = []
+            truthfullAverageConnected = []
             for ctRep in obj[0]["data"]:
                 initAverageConnected.append(ctRep["contentReplication"])
             for ctRep in obj[1]["data"]:
@@ -258,6 +290,9 @@ for (key, value) in toPlot.items():
                 truthfullAverageConnected.append(ctRep["contentReplication"])
 
         if key.__contains__("CaseComparisonLessConnected"):
+            initLessConnected = []
+            maliciousLessConnected = []
+            truthfullLessConnected = []
             for ctRep in obj[0]["data"]:
                 initLessConnected.append(ctRep["contentReplication"])
             for ctRep in obj[0]["data"]:
@@ -275,6 +310,7 @@ for (key, value) in toPlot.items():
             and len(truthfullTopConnected) > 0
             and len(truthfullAverageConnected) > 0
             and len(truthfullLessConnected) > 0
+            and (key.__contains__("LessConnected"))
         ):
             initTopConnected = numpy.array(initTopConnected)
             maliciousTopConnected = numpy.array(maliciousTopConnected)
@@ -288,7 +324,7 @@ for (key, value) in toPlot.items():
 
             plt.close("all")
 
-            fig = plt.figure()
+            fig = plt.figure(figsize=(15, 5))
             ax = fig.add_subplot()
 
             bp = ax.boxplot(
@@ -326,6 +362,5 @@ for (key, value) in toPlot.items():
 
             plt.xlabel("Content Replication over the Network")
             plt.title("Worst and best case Scenario comparison")
-            # plt.savefig("results/" + key + ".png")
 
-            plt.show()
+            plt.savefig("results/" + key + ".png")

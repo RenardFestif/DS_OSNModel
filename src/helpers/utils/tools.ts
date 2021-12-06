@@ -84,3 +84,11 @@ export function shuffle(ar: any[]) {
   for (let j:number, x:any, i:number = ar.length; i; j = Math.floor(Math.random() * i), x = ar[--i], ar[i] = ar[j], ar[j] = x);
   return ar;
 }
+
+export function between(x: number, min: number, max: number): boolean {
+  return x >= min && x < max;
+}
+
+export function symeticNumber(input: number, point: number): number {
+  return (-(input - point)) + point;
+}

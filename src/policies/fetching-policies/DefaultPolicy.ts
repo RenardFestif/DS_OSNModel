@@ -1,13 +1,13 @@
 import Gaussian from 'ts-gaussian';
-import { Observer } from '../helpers/IObserver';
-import { Subject } from '../helpers/ISubject';
-import { assert } from '../helpers/utils/tools';
+import { Observer } from '../../helpers/IObserver';
+import { Subject } from '../../helpers/ISubject';
+import { assert } from '../../helpers/utils/tools';
 import {
   POSTS_PER_USER, PUBLIC_POSTS, PUBLIC_SIGMA, PUBLIC_THRESHOLD,
-} from '../modules/Constant';
-import Content from '../modules/Content';
-import { OSN, State } from '../modules/Osn';
-import { User } from '../modules/User';
+} from '../../modules/Constant';
+import Content from '../../modules/Content';
+import { OSN, State } from '../../modules/Osn';
+import { User } from '../../modules/User';
 
 export default class DefaultPolicy implements Observer {
   public update(subject: Subject): void {
@@ -16,6 +16,7 @@ export default class DefaultPolicy implements Observer {
 
       const user: User = subject.message.body.arg0 as User;
       let publicPostCount = 0;
+      let countRound = 0;
       // RESET PUBLIC FEED
       user.resetPublicFeed();
 
@@ -34,7 +35,7 @@ export default class DefaultPolicy implements Observer {
           user.publicFeed.push(content);
         });
       });
-
+      subject.feed.reverse();
       assert(
         user.publicFeed.length === user.follows.length * POSTS_PER_USER,
         `Publicfeed length = ${user.publicFeed.length} does not match followers ${user.follows.length * POSTS_PER_USER} `,
@@ -43,7 +44,7 @@ export default class DefaultPolicy implements Observer {
       // The content must not been already retweetted by the user
       while (user.publicFeed.length < PUBLIC_POSTS + user.follows.length * POSTS_PER_USER) {
         // eslint-disable-next-line no-loop-func
-        subject.feed.reverse().forEach((content: Content) => {
+        subject.feed.forEach((content: Content) => {
           if (
             content.author !== user
             && publicPostCount < PUBLIC_POSTS
@@ -51,7 +52,8 @@ export default class DefaultPolicy implements Observer {
             && !user.publicFeed.includes(content)
             && !user.follows.includes(content.author)
           ) {
-            const distribution = new Gaussian(subject.getContentReplicationScalable(content), PUBLIC_SIGMA);
+            // console.log(subject.getContentReplicationScalable(content));
+            const distribution = new Gaussian(subject.getContentReplicationScalable(content, countRound), PUBLIC_SIGMA ** 2);
             const rand = distribution.ppf(Math.random());
             // console.log(user.id, rand, content.impact, content.veracity);
             if (rand > PUBLIC_THRESHOLD) {
@@ -61,8 +63,9 @@ export default class DefaultPolicy implements Observer {
             }
           }
         });
+        countRound++;
       }
-      user.publicFeed.sort(() => ((Math.random() > 0.5) ? 1 : -1));
+      user.publicFeed.sort((a, b) => a.impact - b.impact).reverse();
       assert(
         user.publicFeed.length === PUBLIC_POSTS + user.follows.length * POSTS_PER_USER,
         `Publicfeed length = ${user.publicFeed.length} does not match ${PUBLIC_POSTS + user.follows.length * POSTS_PER_USER} `,

@@ -1,31 +1,44 @@
+/* eslint-disable no-case-declarations */
+import Gaussian from 'ts-gaussian';
 import { Observer } from '../helpers/IObserver';
 import { Subject } from '../helpers/ISubject';
-import { assert } from '../helpers/utils/tools';
+import { assert, between, symeticNumber } from '../helpers/utils/tools';
 import {
-  AVERAGE_RETWEET_PER_USER_PER_UNIT_OF_TIME, DEFAULT_FAKE_RETWEET_TRESHOLD, FAKE_RETWEET_MULTIPLICATOR, NUMBER_USERS,
+  AVERAGE_RETWEET_PER_USER_PER_UNIT_OF_TIME, CASE_SIGMA_RATING, DEFAULT_FAKE_RETWEET_TRESHOLD, FAKE_RETWEET_MULTIPLICATOR, NUMBER_USERS, OPTIMISTIC_SIGMA_RATING, TOP_CONNECTED_PERCENTAGE,
 } from './Constant';
 import Content from './Content';
-import { User } from './User';
+import { Nature, User } from './User';
 
 export enum State {
-    POST,
-    IDDLE,
-    FETCH
+    FETCH,
+    SCORE,
+    IDDLE
 }
 
-export enum Policy {
-  DEFAULT,
+// export enum Policy {
+//   DEFAULT,
+// }
+
+export enum Approach{
+  OPTIMISTIC,
+  RANDOM,
+  PESSIMISTIC,
 }
 
 interface Message{
-  body: {arg0 : Object},
+  body: {
+    arg0? : Object,
+    arg1? : Object,
+    arg2? : Object,
+  },
 }
 
 export class OSN implements Subject {
     private _users: Array<User>;
     private _observers: Array<Observer>;
     private _feed: Array<Content>;
-    private _policy: Policy;
+    private _maxContentReplication : number
+    // private _policy: Policy;
 
     public message: Message;
     public state: State;
@@ -34,7 +47,8 @@ export class OSN implements Subject {
       this._users = [];
       this._observers = [];
       this._feed = [];
-      this._policy = Policy.DEFAULT;
+      this._maxContentReplication = TOP_CONNECTED_PERCENTAGE;
+      // this._policy = Policy.DEFAULT;
 
       this.message = this.resetMessage();
       this.state = State.IDDLE;
@@ -47,12 +61,15 @@ export class OSN implements Subject {
 
     get feed(): Array<Content> { return this._feed; }
 
-    get policy(): Policy { return this._policy; }
+    get maxContentReplication(): number { return this._maxContentReplication; }
+
+    // get policy(): Policy { return this._policy; }
 
     getUser(id: number): any { return this._users.find((user) => user.id === id); }
 
     /** SETTERS */
-    set policy(policy: Policy) { this._policy = policy; }
+    // set policy(policy: Policy) { this._policy = policy; }
+    set maxContentReplication(maxContentReplication: number) { this._maxContentReplication = maxContentReplication; }
 
     /** MODIFIERS */
     addUser(user: User): void {
@@ -65,16 +82,50 @@ export class OSN implements Subject {
 
     /** METHODS */
 
+    scoreDiscretization(continuousScore: number): number {
+      if (between(continuousScore, 0, 0.20)) {
+        return 1;
+      }
+      if (between(continuousScore, 0.20, 0.40)) {
+        return 2;
+      }
+      if (between(continuousScore, 0.40, 0.60)) {
+        return 3;
+      }
+      if (between(continuousScore, 0.60, 0.80)) {
+        return 4;
+      }
+      return 5;
+    }
+
+    getMaxContentRep():number {
+      const ctReps : number[] = [];
+      this.feed.forEach((content) => {
+        ctReps.push(content.impact);
+      });
+      return Math.max(...ctReps);
+    }
+
     getContentByID(id:number):Content|undefined {
       return this.feed.find((content) => content.id === id);
     }
 
-    getContentReplicationScalable(content: Content):number {
-      return content.impact / NUMBER_USERS;
+    getContentReplicationScalable(content: Content, exitWaranty : number):number {
+      return (content.impact + (exitWaranty / 10)) / this.maxContentReplication;
+    }
+
+    getContentReplicationAdjustedByScore(content : Content): number {
+      return ((content.impact / this.maxContentReplication) + (content.score / 100)) / 2;
     }
 
     resetMessage():Message {
-      return { body: { arg0: {} } };
+      return {
+        body: {
+          arg0: {},
+          arg1: {},
+          arg2: {},
+        },
+      };
     }
 
     checkUserRegistred(user:User): void {
@@ -91,14 +142,18 @@ export class OSN implements Subject {
       this.feed.sort((a, b) => a.id - b.id);
     }
 
+    sortFeedByScoreThenContentReplication(): void {
+      this.feed.sort((a, b) => a.score - b.score || a.impact - b.impact);
+    }
+
     retweetAll(): void {
       this.users.forEach((user) => {
         // RETWEET OR NOT RETWEET
         if (Math.random() <= AVERAGE_RETWEET_PER_USER_PER_UNIT_OF_TIME) {
-          // const retweetableContentSortedByImpact = user.sortedRetweetable();
           let rt = false;
           let i = 0;
           // We determine a content to retweet based on the content replication and the veracity
+          // Fact that On average fake news are 70% more likely to be retweeted
           while (!rt) {
             const offsetContent = user.publicFeed[i % user.publicFeed.length];
             const adjustedThreshold = DEFAULT_FAKE_RETWEET_TRESHOLD - ((((offsetContent.veracity / 100) * FAKE_RETWEET_MULTIPLICATOR) * DEFAULT_FAKE_RETWEET_TRESHOLD));
@@ -136,6 +191,65 @@ export class OSN implements Subject {
       });
     }
 
+    rateAll(approach : Approach): void {
+      let score: number;
+      let mu: number;
+      let distribution : Gaussian;
+      let sample: number;
+      let sigma : number;
+
+      this.users.forEach((user) => {
+        sigma = user.nature === Nature.AVERAGE ? 1 : CASE_SIGMA_RATING;
+        user.publicFeed.forEach((content) => {
+          // Based on the content veracity and the scorer Nature we determine a rating from 1 to 5
+          const ctVeracity = content.veracity;
+          const userProfile = user.nature;
+
+          switch (userProfile) {
+            // Malicious user has a tendency to rate better malicious content
+            // Normal distribution centred around (1 - veracity / 100 )
+            case Nature.MALICIOUS:
+              /**
+               * veracity -> !veracity (between 0 and 1)
+               * (100 - Veracity)/100
+              */
+              mu = (100 - ctVeracity) / 100;
+              break;
+
+            case Nature.TRUTHFULL:
+              // Oposite of Malicious profile
+              mu = ctVeracity / 100;
+              break;
+
+            default:
+              switch (approach) {
+                case Approach.OPTIMISTIC:
+                  sigma = OPTIMISTIC_SIGMA_RATING;
+                  mu = ctVeracity / 100;
+                  break;
+
+                default:
+                  throw new Error('Please provide a valid Approach');
+              }
+              break;
+          }
+
+          distribution = new Gaussian(mu, sigma ** 2);
+          sample = distribution.ppf(Math.random());
+          if (sample < 0 || sample > 1) {
+            sample = symeticNumber(sample, mu) % 1;
+          }
+
+          // Set the score to a discret Value (1 to 5 star rating)
+          score = this.scoreDiscretization(sample);
+
+          this.rate(user, content, score);
+        });
+      });
+
+      this.maxContentReplication = this.getMaxContentRep();
+    }
+
     /** ACTIONS */
     post(user: User): Content {
       // checks if the user is registred on the OSN
@@ -163,8 +277,11 @@ export class OSN implements Subject {
       this.resetMessage();
     }
 
-    rate(user: User, content: Content): void {
+    rate(user: User, content: Content, score: number): void {
+      this.message.body = { arg0: user, arg1: content, arg2: score };
+      this.state = State.SCORE;
       this.notify();
+      this.resetMessage();
     }
 
     follow(userSender: User, userReceiver: User): void | never {

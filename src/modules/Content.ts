@@ -2,6 +2,11 @@ import Gaussian from 'ts-gaussian';
 import { SIGMA_VERACITY } from './Constant';
 import { Nature, User } from './User';
 
+interface Estimation{
+  userId: number,
+  estimation : number
+}
+
 export default class Content {
     static count = 0;
 
@@ -10,6 +15,7 @@ export default class Content {
     private _veracity: number;
     private _score: number;
     private _impact: number;
+    private _estimations: Estimation[]
 
     constructor(author: User) {
       this._id = Content.count;
@@ -17,6 +23,7 @@ export default class Content {
       this._veracity = this.initVeracity();
       this._score = author.score;
       this._impact = author.followers.length === 0 ? 1 : author.followers.length;
+      this._estimations = [];
       Content.count += 1;
     }
 
@@ -26,6 +33,7 @@ export default class Content {
     public get score() { return this._score; }
     public get impact() { return this._impact; }
     public get id() { return this._id; }
+    public get estimations() { return this._estimations; }
 
     //* * SETTERS */
     public set veracity(veracity : number) { this._veracity = veracity; }

@@ -1,0 +1,409 @@
+{
+  "data": [
+    {
+      "veracity": 54,
+      "contentReplication": 33.30769230769231
+    },
+    {
+      "veracity": 22,
+      "contentReplication": 77.75
+    },
+    {
+      "veracity": 100,
+      "contentReplication": 3.2448979591836737
+    },
+    {
+      "veracity": 73,
+      "contentReplication": 25.076923076923073
+    },
+    {
+      "veracity": 49,
+      "contentReplication": 13
+    },
+    {
+      "veracity": 61,
+      "contentReplication": 16.7
+    },
+    {
+      "veracity": 24,
+      "contentReplication": 33.4
+    },
+    {
+      "veracity": 81,
+      "contentReplication": 10.615384615384615
+    },
+    {
+      "veracity": 65,
+      "contentReplication": 26.666666666666668
+    },
+    {
+      "veracity": 53,
+      "contentReplication": 25.09090909090909
+    },
+    {
+      "veracity": 45,
+      "contentReplication": 18.75
+    },
+    {
+      "veracity": 42,
+      "contentReplication": 24
+    },
+    {
+      "veracity": 75,
+      "contentReplication": 19
+    },
+    {
+      "veracity": 59,
+      "contentReplication": 8.75
+    },
+    {
+      "veracity": 63,
+      "contentReplication": 15.933333333333334
+    },
+    {
+      "veracity": 62,
+      "contentReplication": 23.555555555555557
+    },
+    {
+      "veracity": 82,
+      "contentReplication": 23.333333333333332
+    },
+    {
+      "veracity": 16,
+      "contentReplication": 17.25
+    },
+    {
+      "veracity": 56,
+      "contentReplication": 15.2
+    },
+    {
+      "veracity": 37,
+      "contentReplication": 4
+    },
+    {
+      "veracity": 71,
+      "contentReplication": 7.1
+    },
+    {
+      "veracity": 74,
+      "contentReplication": 6.5555555555555545
+    },
+    {
+      "veracity": 28,
+      "contentReplication": 5
+    },
+    {
+      "veracity": 72,
+      "contentReplication": 6.142857142857143
+    },
+    {
+      "veracity": 38,
+      "contentReplication": 7.363636363636364
+    },
+    {
+      "veracity": 60,
+      "contentReplication": 3.3333333333333335
+    },
+    {
+      "veracity": 52,
+      "contentReplication": 5.5
+    },
+    {
+      "veracity": 9,
+      "contentReplication": 21.285714285714285
+    },
+    {
+      "veracity": 68,
+      "contentReplication": 2.3333333333333335
+    },
+    {
+      "veracity": 20,
+      "contentReplication": 15.25
+    },
+    {
+      "veracity": 55,
+      "contentReplication": 13.5
+    },
+    {
+      "veracity": 15,
+      "contentReplication": 4.4
+    },
+    {
+      "veracity": 51,
+      "contentReplication": 7.647058823529412
+    },
+    {
+      "veracity": 13,
+      "contentReplication": 2.5
+    },
+    {
+      "veracity": 64,
+      "contentReplication": 2.1666666666666665
+    },
+    {
+      "veracity": 2,
+      "contentReplication": 3.3333333333333335
+    },
+    {
+      "veracity": 19,
+      "contentReplication": 2
+    },
+    {
+      "veracity": 18,
+      "contentReplication": 7.000000000000001
+    },
+    {
+      "veracity": 89,
+      "contentReplication": 4.142857142857143
+    },
+    {
+      "veracity": 88,
+      "contentReplication": 2.5833333333333335
+    },
+    {
+      "veracity": 83,
+      "contentReplication": 3.5000000000000004
+    },
+    {
+      "veracity": 66,
+      "contentReplication": 6.076923076923077
+    },
+    {
+      "veracity": 58,
+      "contentReplication": 2.125
+    },
+    {
+      "veracity": 41,
+      "contentReplication": 1.2857142857142858
+    },
+    {
+      "veracity": 85,
+      "contentReplication": 1.8000000000000003
+    },
+    {
+      "veracity": 10,
+      "contentReplication": 1.7777777777777777
+    },
+    {
+      "veracity": 93,
+      "contentReplication": 2.8
+    },
+    {
+      "veracity": 87,
+      "contentReplication": 3
+    },
+    {
+      "veracity": 95,
+      "contentReplication": 2
+    },
+    {
+      "veracity": 84,
+      "contentReplication": 1.7777777777777777
+    },
+    {
+      "veracity": 98,
+      "contentReplication": 2.4
+    },
+    {
+      "veracity": 67,
+      "contentReplication": 1.5
+    },
+    {
+      "veracity": 69,
+      "contentReplication": 1.3636363636363635
+    },
+    {
+      "veracity": 34,
+      "contentReplication": 1.3333333333333333
+    },
+    {
+      "veracity": 46,
+      "contentReplication": 1.4615384615384615
+    },
+    {
+      "veracity": 0,
+      "contentReplication": 1.3478260869565217
+    },
+    {
+      "veracity": 39,
+      "contentReplication": 1.5454545454545454
+    },
+    {
+      "veracity": 94,
+      "contentReplication": 1.6666666666666667
+    },
+    {
+      "veracity": 97,
+      "contentReplication": 1.3333333333333333
+    },
+    {
+      "veracity": 92,
+      "contentReplication": 2
+    },
+    {
+      "veracity": 91,
+      "contentReplication": 1.8333333333333333
+    },
+    {
+      "veracity": 70,
+      "contentReplication": 1.5
+    },
+    {
+      "veracity": 48,
+      "contentReplication": 1.3571428571428572
+    },
+    {
+      "veracity": 78,
+      "contentReplication": 1.6666666666666667
+    },
+    {
+      "veracity": 79,
+      "contentReplication": 1.25
+    },
+    {
+      "veracity": 76,
+      "contentReplication": 1.6
+    },
+    {
+      "veracity": 36,
+      "contentReplication": 1.4285714285714286
+    },
+    {
+      "veracity": 80,
+      "contentReplication": 1.25
+    },
+    {
+      "veracity": 35,
+      "contentReplication": 1.3
+    },
+    {
+      "veracity": 44,
+      "contentReplication": 1.8000000000000003
+    },
+    {
+      "veracity": 6,
+      "contentReplication": 1.2857142857142858
+    },
+    {
+      "veracity": 27,
+      "contentReplication": 1.6
+    },
+    {
+      "veracity": 8,
+      "contentReplication": 1.4
+    },
+    {
+      "veracity": 3,
+      "contentReplication": 1.6666666666666667
+    },
+    {
+      "veracity": 96,
+      "contentReplication": 2
+    },
+    {
+      "veracity": 31,
+      "contentReplication": 1.25
+    },
+    {
+      "veracity": 14,
+      "contentReplication": 1.625
+    },
+    {
+      "veracity": 30,
+      "contentReplication": 1.125
+    },
+    {
+      "veracity": 23,
+      "contentReplication": 1.2857142857142858
+    },
+    {
+      "veracity": 25,
+      "contentReplication": 1.2222222222222223
+    },
+    {
+      "veracity": 86,
+      "contentReplication": 1.7500000000000002
+    },
+    {
+      "veracity": 29,
+      "contentReplication": 1.4
+    },
+    {
+      "veracity": 1,
+      "contentReplication": 1.5
+    },
+    {
+      "veracity": 21,
+      "contentReplication": 1.2727272727272727
+    },
+    {
+      "veracity": 5,
+      "contentReplication": 1.5
+    },
+    {
+      "veracity": 7,
+      "contentReplication": 1.5
+    },
+    {
+      "veracity": 33,
+      "contentReplication": 1.2307692307692308
+    },
+    {
+      "veracity": 99,
+      "contentReplication": 1.3333333333333333
+    },
+    {
+      "veracity": 57,
+      "contentReplication": 1.1666666666666667
+    },
+    {
+      "veracity": 47,
+      "contentReplication": 1.2222222222222223
+    },
+    {
+      "veracity": 43,
+      "contentReplication": 1.5
+    },
+    {
+      "veracity": 32,
+      "contentReplication": 1.125
+    },
+    {
+      "veracity": 11,
+      "contentReplication": 1.5
+    },
+    {
+      "veracity": 90,
+      "contentReplication": 1.2
+    },
+    {
+      "veracity": 17,
+      "contentReplication": 1.2
+    },
+    {
+      "veracity": 26,
+      "contentReplication": 1
+    },
+    {
+      "veracity": 12,
+      "contentReplication": 1
+    },
+    {
+      "veracity": 50,
+      "contentReplication": 1
+    },
+    {
+      "veracity": 40,
+      "contentReplication": 1.125
+    },
+    {
+      "veracity": 77,
+      "contentReplication": 1
+    },
+    {
+      "veracity": 4,
+      "contentReplication": 1
+    }
+  ],
+  "totalUsers": 100
+}

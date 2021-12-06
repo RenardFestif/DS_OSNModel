@@ -3,16 +3,6 @@
  * [WITNESS]
  *
  * OBJECTIVES:
- * Simulate the default behaviour of a twitter like social plateform upon some basic user action
- * (Register / Follow / Post / Fetch / Retweet)
- *
- * PROTOCOL:
- * - Register N user
- * - Following according to the pareto distribution
- * - Post X content for each user
- * - I * ( Fetch & retweet )
- *
- * - Mesure Content replication of a new post
  */
 
 import { assert } from 'console';
@@ -21,11 +11,13 @@ import { IContentVeracityDistribJSON, IFollowersDistribJSON, INatureDistribJSON 
 import { zipf } from '../helpers/utils/distributionLaw';
 import getRandomSubarray, { contentReplicationDistributionByVeracity } from '../helpers/utils/tools';
 import {
+  APPROACH,
   MIN_Y_ADJUST, NB_ROUNDS, NUMBER_USERS, POSTS_PER_USER,
 } from '../modules/Constant';
 import { OSN } from '../modules/Osn';
 import { Nature, User } from '../modules/User';
-import DefaultPolicy from '../policies/fetching-policies/DefaultPolicy';
+import ScoreBasedExpositionPolicy from '../policies/fetching-policies/ScoreBasedExpositionPolicy';
+import DirectFiveStarScoringPolicy from '../policies/scoring-policies/DirectFiveStarScoringPolicy';
 
 const jsonfile = require('jsonfile');
 
@@ -39,10 +31,11 @@ const start = new Date().getTime();
 
 // CREATE OSN
 const osn = new OSN();
-osn.attach(new DefaultPolicy());
+osn.attach(new ScoreBasedExpositionPolicy());
+osn.attach(new DirectFiveStarScoringPolicy());
 
 // REGISTER N USERS in OSN
-let i;
+let i: number;
 
 for (i = 0; i < NUMBER_USERS; i++) {
   const usr = new User();
@@ -109,6 +102,8 @@ for (let index = 0; index < NB_ROUNDS; index++) {
   console.log('\x1b[32m%s\x1b[0m', `Round ${index + 1} :`);
   osn.fetchAll();
   console.log('\x1b[32m%s\x1b[0m', 'All users updated their feed');
+  osn.rateAll(APPROACH);
+  console.log('\x1b[32m%s\x1b[0m', 'All users Rated content from their feed');
   osn.retweetAll();
   console.log('\x1b[32m%s\x1b[0m', 'All users Scrolled and retweeted');
 
@@ -124,18 +119,18 @@ console.log('\x1b[34m%s\x1b[0m', `Simulation completed in ${Math.trunc((new Date
 
 // EXPORT RESULTS
 fs.mkdir('results', () => {
-  jsonfile.writeFile('results/Witness_UserNatureDistrib.json', natureDistrib, { spaces: 2, EOL: '\r\n' });
+  jsonfile.writeFile('results/Scored_UserNatureDistrib.json', natureDistrib, { spaces: 2, EOL: '\r\n' });
   console.log('\x1b[36m%s\x1b[0m', 'User Nature Distribution file written');
 
-  jsonfile.writeFile('results/Witness_FollowersDistrib.json', followersDistrib, { spaces: 2, EOL: '\r\n' });
+  jsonfile.writeFile('results/Scored_FollowersDistrib.json', followersDistrib, { spaces: 2, EOL: '\r\n' });
   console.log('\x1b[36m%s\x1b[0m', 'Followers Distribution file written');
 
-  jsonfile.writeFile('results/Witness_ContentVeracityDistrib.json', contentVeracityDistrib, { spaces: 2, EOL: '\r\n' });
+  jsonfile.writeFile('results/Scored_ContentVeracityDistrib.json', contentVeracityDistrib, { spaces: 2, EOL: '\r\n' });
   console.log('\x1b[36m%s\x1b[0m', 'Content veracity Distribution file written');
 
-  jsonfile.writeFile('results/Witness_InitialContentReplication.json', initialContentRepDistrib, { spaces: 2, EOL: '\r\n' });
+  jsonfile.writeFile('results/Scored_InitialContentReplication.json', initialContentRepDistrib, { spaces: 2, EOL: '\r\n' });
   console.log('\x1b[36m%s\x1b[0m', 'Initial content replication file written');
 
-  jsonfile.writeFile('results/Witness_FinalContentReplication.json', finalContentRepDistrib, { spaces: 2, EOL: '\r\n' });
+  jsonfile.writeFile('results/Scored_FinalContentReplication.json', finalContentRepDistrib, { spaces: 2, EOL: '\r\n' });
   console.log('\x1b[36m%s\x1b[0m', 'Final content replication file written');
 });

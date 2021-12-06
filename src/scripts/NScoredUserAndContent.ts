@@ -3,18 +3,7 @@
  * [WITNESS Averaged on N simulation]
  *
  * OBJECTIVES:
- * Simulate the default behaviour of a twitter like social plateform upon some basic user action
- * (Register / Follow / Post / Fetch / Retweet)
- * Analyse the averages results over N scenario
- *
- * PROTOCOL:
- * - Register N user
- * - Following according to the pareto distribution
- * - Post X content for each user
- * - I * ( Fetch & retweet )
- * - Repeat N times
- *
- * - Mesure Content replication of a new post
+
  */
 
 import { assert } from 'console';
@@ -25,11 +14,13 @@ import {
 import { zipf } from '../helpers/utils/distributionLaw';
 import getRandomSubarray, { averageArray, contentReplicationDistributionByVeracity } from '../helpers/utils/tools';
 import {
+  APPROACH,
   MIN_Y_ADJUST, NB_ROUNDS, NB_ROUNDS_ANALYSIS, NUMBER_USERS, POSTS_PER_USER,
 } from '../modules/Constant';
 import { OSN } from '../modules/Osn';
 import { Nature, User } from '../modules/User';
-import DefaultPolicy from '../policies/fetching-policies/DefaultPolicy';
+import ScoreBasedExpositionPolicy from '../policies/fetching-policies/ScoreBasedExpositionPolicy';
+import DirectFiveStarScoringPolicy from '../policies/scoring-policies/DirectFiveStarScoringPolicy';
 
 const jsonfile = require('jsonfile');
 
@@ -45,7 +36,8 @@ for (let set = 0; set < NB_ROUNDS_ANALYSIS; set++) {
   console.log('\x1b[32m%s\x1b[0m', `Set ${set + 1} :`);
   // CREATE OSN
   const osn = new OSN();
-  osn.attach(new DefaultPolicy());
+  osn.attach(new ScoreBasedExpositionPolicy());
+  osn.attach(new DirectFiveStarScoringPolicy());
 
   // REGISTER N USERS in OSN
   for (let i = 0; i < NUMBER_USERS; i++) {
@@ -84,10 +76,12 @@ for (let set = 0; set < NB_ROUNDS_ANALYSIS; set++) {
     console.log('\x1b[32m%s\x1b[0m', `Round ${index + 1} :`);
     osn.fetchAll();
     console.log('\x1b[32m%s\x1b[0m', 'All users updated their feed');
+    osn.rateAll(APPROACH);
+    console.log('\x1b[32m%s\x1b[0m', 'All users Rated content from their feed');
     osn.retweetAll();
     console.log('\x1b[32m%s\x1b[0m', 'All users Scrolled and retweeted');
 
-  // Snapshot ?
+    // Snapshot ?
   }
 
   finalContentRepDistribs.push(contentReplicationDistributionByVeracity(osn));
@@ -142,7 +136,7 @@ veracities.forEach((veracity) => {
 console.log('\x1b[34m%s\x1b[0m', `Simulation completed in ${Math.trunc((new Date().getTime() - start) / 1000)} seconds`);
 
 // EXPORT RESULTS
-jsonfile.writeFile('results/Witness_InitialContentReplicationAveraged.json', initialCtRepDistribAvg, { spaces: 2, EOL: '\r\n' });
+jsonfile.writeFile('results/Scored_InitialContentReplicationAveraged.json', initialCtRepDistribAvg, { spaces: 2, EOL: '\r\n' });
 console.log('\x1b[36m%s\x1b[0m', 'Initial content replication averaged file written');
-jsonfile.writeFile('results/Witness_FinalContentReplicationAveraged.json', finalCtRepDistribAvg, { spaces: 2, EOL: '\r\n' });
+jsonfile.writeFile('results/Scored_FinalContentReplicationAveraged.json', finalCtRepDistribAvg, { spaces: 2, EOL: '\r\n' });
 console.log('\x1b[36m%s\x1b[0m', 'Final content replication averaged file written');
