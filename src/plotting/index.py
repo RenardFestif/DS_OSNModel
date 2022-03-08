@@ -346,21 +346,20 @@ for (key, value) in toPlot.items():
 
             ax.set_yticklabels(
                 [
-                    "Top Connected\nInitial Content Replication",
-                    "Top Connected\nMalicious User",
-                    "Top Connected\nTruthfull User",
-                    "Average Connected\nInitial Content Replication",
-                    "Average Connected\nMalicious User",
-                    "Average Connected\nTruthfull User",
-                    "Less Connected\nInitial Content Replication",
-                    "Less Connected\nMalicious User",
-                    "Less Connected\nTruthfull User",
+                    "Top Connected\n Initial Content Replication",
+                    "Top Connected\n Malicious User",
+                    "Top Connected\n Truthfull User",
+                    "Average Connected\n Initial Content Replication",
+                    "Average Connected\n Malicious User",
+                    "Average Connected\n Truthfull User",
+                    "Less Connected\n Initial Content Replication",
+                    "Less Connected\n Malicious User",
+                    "Less Connected\n Truthfull User",
                 ]
             )
             ax.get_xaxis().tick_bottom()
             ax.get_yaxis().tick_left()
 
             plt.xlabel("Content Replication over the Network")
-            plt.title("Worst and best case Scenario comparison")
 
             plt.savefig("results/" + key + ".png")

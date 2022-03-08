@@ -39,7 +39,9 @@ export default class DirectFiveStarScoringPolicy implements Observer {
        * content yet
        */
       if (!content.estimations.some((e) => e.userId === scorer.id)) {
-        content.estimations.push({ userId: scorer.id, estimation });
+        for (let i = 0; i < scorer.score; i++) {
+          content.estimations.push({ userId: scorer.id, estimation });
+        }
       }
 
       /** Compute average of estimations and current score to set new content score */
